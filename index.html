@@ -8,15 +8,17 @@
 
 <style>
 :root{
-  --pink:#ff5fa2;
-  --yellow:#ffd23f;
-  --blue:#3fa9ff;
-  --lime:#a6ff3f;
-  --purple:#b15fff;
-  --ink:#1d1d2b;
-  --paper:#fffdf7;
-  --radius:28px;
-  --shadow: 0 10px 30px rgba(29,29,43,0.12);
+  --pink:#FF6B6B;
+  --yellow:#FFD34E;
+  --blue:#3D8BFF;
+  --lime:#45C486;
+  --purple:#8A6CFF;
+  --ink:#222222;
+  --sub:#555555;
+  --paper:#FAF8F3;
+  --paper2:#F7F3EA;
+  --radius:20px;
+  --shadow: 0 6px 20px rgba(34,34,34,0.08);
 }
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
@@ -48,10 +50,14 @@ button{font-family:inherit;}
 .deco.star::before{content:"★";}
 .float-deco{
   position:absolute;
-  font-size:28px;
-  opacity:.55;
+  font-size:20px;
+  opacity:.25;
   z-index:0;
   pointer-events:none;
+  color:#ccc;
+}
+@media(max-width:640px){
+  .float-deco{display:none;}
 }
 
 /* ===== LOADER ===== */
@@ -184,32 +190,34 @@ section{
 }
 .eyebrow{
   display:inline-block;
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:.1em;
-  padding:6px 16px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.05em;
+  padding:6px 14px;
   border-radius:50px;
-  background:var(--yellow);
-  color:var(--ink);
+  background:#fff;
+  border:1px solid #e8e3d8;
+  color:var(--sub);
   margin-bottom:14px;
 }
 .sec-title{
-  font-size:28px;
-  font-weight:900;
-  line-height:1.4;
+  font-size:26px;
+  font-weight:800;
+  line-height:1.45;
   margin:0 0 16px;
+  color:var(--ink);
 }
 .sec-title .accent{
-  background:linear-gradient(90deg,var(--pink),var(--blue));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:var(--pink);
 }
 .sec-lead{
   font-size:15px;
-  line-height:1.9;
-  color:#444;
+  line-height:1.85;
+  color:var(--sub);
   margin-bottom:30px;
+}
+@media(min-width:640px){
+  .sec-title{font-size:34px;}
 }
 
 /* marquee */
@@ -217,14 +225,16 @@ section{
   white-space:nowrap;
   overflow:hidden;
   position:relative;
-  font-weight:900;
-  font-size:14vw;
+  font-weight:800;
+  font-size:28px;
   line-height:1;
   color:transparent;
-  -webkit-text-stroke:1.5px var(--ink);
-  opacity:.08;
+  -webkit-text-stroke:1px var(--ink);
+  opacity:.10;
   user-select:none;
   z-index:0;
+  padding:14px 0;
+  background:var(--paper2);
 }
 .marquee .track{
   display:inline-block;
@@ -233,109 +243,146 @@ section{
 
 /* ===== HERO ===== */
 #hero{
-  padding-top:90px;
-  background:linear-gradient(180deg,#fff8e7 0%, var(--paper) 60%);
-}
-.hero-photo-card{
+  padding:64px 20px 56px;
+  background:var(--paper);
   position:relative;
-  border-radius:32px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  transform:rotate(-2deg);
-  margin:20px 0 30px;
-  border:6px solid #fff;
 }
-.hero-photo-card img{width:100%;}
-.sticker{
+.hero-bgtype{
   position:absolute;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:clamp(60px,22vw,160px);
   font-weight:900;
-  font-size:13px;
-  padding:8px 14px;
-  border-radius:50px;
-  color:#fff;
-  box-shadow:0 6px 14px rgba(0,0,0,.18);
-  z-index:5;
-}
-.hero-photo-card .sticker{
-  top:-12px;
-  left:-10px;
-  background:var(--pink);
-  transform:rotate(-8deg);
-}
-.hero-photo-card .sticker.s2{
-  top:auto;
-  bottom:-12px;
-  right:-10px;
-  left:auto;
-  background:var(--blue);
-  transform:rotate(6deg);
+  color:rgba(34,34,34,0.04);
+  letter-spacing:.02em;
+  white-space:nowrap;
+  z-index:0;
+  pointer-events:none;
+  user-select:none;
 }
 .hero-copy{
   text-align:center;
+  position:relative;
+  z-index:1;
+}
+.hero-label{
+  display:inline-block;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.05em;
+  color:var(--sub);
+  background:#fff;
+  border:1px solid #e8e3d8;
+  padding:6px 14px;
+  border-radius:50px;
+  margin-bottom:18px;
 }
 .hero-copy h1{
-  font-size:34px;
-  line-height:1.45;
-  font-weight:900;
+  font-size:36px;
+  line-height:1.4;
+  font-weight:800;
   margin:0 0 18px;
+  color:var(--ink);
 }
 .hero-copy h1 .line1{display:block;}
 .hero-copy h1 .accent{
-  background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  color:var(--pink);
 }
 .hero-sub{
   font-size:15px;
-  color:#333;
-  line-height:1.9;
+  color:var(--sub);
+  line-height:1.85;
   margin-bottom:8px;
 }
-.hero-sub b{color:var(--pink);}
+.hero-sub b{color:var(--ink);font-weight:700;}
 .hero-ctas{
   display:flex;
   flex-direction:column;
   gap:12px;
-  margin:26px 0 10px;
+  margin:26px 0 28px;
   align-items:center;
+}
+.hero-photo-card{
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  margin:0 0 22px;
+  aspect-ratio:4/5;
+}
+.hero-photo-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+}
+.hero-photo-caption{
+  position:absolute;
+  left:14px;
+  bottom:14px;
+  right:14px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  z-index:5;
+}
+.hero-photo-caption span{
+  font-size:11.5px;
+  font-weight:700;
+  padding:6px 12px;
+  border-radius:50px;
+  color:#fff;
+  background:rgba(34,34,34,0.62);
+  backdrop-filter:blur(2px);
+  white-space:nowrap;
 }
 .hero-tags{
   display:flex;
   gap:8px;
   flex-wrap:wrap;
   justify-content:center;
-  margin-top:18px;
+  margin-top:4px;
 }
 .hero-tags span{
-  font-size:12px;
-  font-weight:800;
+  font-size:11.5px;
+  font-weight:700;
   background:#fff;
-  border:2px solid var(--ink);
+  border:1px solid #e8e3d8;
+  color:var(--sub);
   padding:6px 12px;
   border-radius:50px;
+}
+@media(min-width:640px){
+  .hero-copy h1{font-size:48px;}
+  .hero-photo-card{aspect-ratio:16/9;}
+}
+@media(min-width:1024px){
+  .hero-copy h1{font-size:64px;}
 }
 
 /* ===== EMPATHY ===== */
 #empathy{background:#fff;}
 .empathy-card{
-  background:linear-gradient(135deg,#fff,#fff6fb);
+  background:#fff;
+  border:1px solid #eee7d8;
   border-radius:var(--radius);
-  padding:22px;
+  padding:20px;
   box-shadow:var(--shadow);
-  margin-bottom:16px;
+  margin-bottom:14px;
   display:flex;
   gap:14px;
   align-items:flex-start;
 }
-.empathy-card .emoji{font-size:30px;flex:0 0 auto;}
-.empathy-card p{margin:0;font-size:14.5px;line-height:1.8;font-weight:600;}
+.empathy-card .emoji{font-size:26px;flex:0 0 auto;}
+.empathy-card p{margin:0;font-size:14.5px;line-height:1.8;font-weight:500;color:var(--ink);}
 .empathy-quote{
   text-align:center;
-  font-size:19px;
-  font-weight:900;
-  margin-top:36px;
-  line-height:1.8;
+  font-size:18px;
+  font-weight:700;
+  margin-top:34px;
+  line-height:1.9;
+  color:var(--ink);
 }
 .empathy-quote .hi{color:var(--pink);}
 
@@ -354,36 +401,38 @@ section{
 .get-card{
   background:#fff;
   border-radius:var(--radius);
-  padding:26px 22px;
+  padding:24px 22px;
   box-shadow:var(--shadow);
-  border:3px solid transparent;
+  border:1px solid #eee7d8;
+  border-left:4px solid transparent;
   position:relative;
   overflow:hidden;
 }
 .get-card .num{
   position:absolute;
-  top:10px;
-  right:16px;
-  font-size:42px;
-  font-weight:900;
-  opacity:.1;
+  top:14px;
+  right:18px;
+  font-size:13px;
+  font-weight:700;
+  color:#ccc;
 }
 .get-card h3{
   font-size:17px;
-  font-weight:900;
+  font-weight:700;
   margin:6px 0 10px;
+  color:var(--ink);
 }
 .get-card p{
   font-size:13.5px;
   line-height:1.8;
-  color:#444;
+  color:var(--sub);
   margin:0;
 }
-.get-card .ic{font-size:30px;}
-.get-card.c1{border-color:var(--pink);}
-.get-card.c2{border-color:var(--blue);}
-.get-card.c3{border-color:var(--yellow);}
-.get-card.c4{border-color:var(--lime);}
+.get-card .ic{font-size:26px;}
+.get-card.c1{border-left-color:var(--pink);}
+.get-card.c2{border-left-color:var(--blue);}
+.get-card.c3{border-left-color:var(--yellow);}
+.get-card.c4{border-left-color:var(--lime);}
 
 /* ===== CLASS ===== */
 #classes{background:#fff;}
@@ -403,7 +452,7 @@ section{
   border-radius:var(--radius);
   box-shadow:var(--shadow);
   overflow:hidden;
-  border:1px solid #f0f0f0;
+  border:1px solid #eee7d8;
 }
 @media(min-width:640px){
   .class-card{flex:0 0 45%;}
@@ -414,19 +463,18 @@ section{
 .class-card .tag{
   display:inline-block;
   font-size:11px;
-  font-weight:800;
+  font-weight:700;
   padding:4px 12px;
   border-radius:50px;
   margin-bottom:8px;
-  color:#fff;
 }
-.class-card.kids .tag{background:var(--blue);}
-.class-card.teen .tag{background:var(--purple);}
-.class-card.adult .tag{background:var(--pink);}
-.class-card.family .tag{background:var(--lime);color:var(--ink);}
-.class-card h3{font-size:18px;font-weight:900;margin:0 0 6px;}
-.class-card .meta{font-size:12.5px;color:#777;margin-bottom:10px;}
-.class-card p{font-size:13.5px;line-height:1.8;color:#444;padding:0 20px 20px;margin:0;}
+.class-card.kids .tag{background:rgba(61,139,255,.1);color:var(--blue);}
+.class-card.teen .tag{background:rgba(138,108,255,.1);color:var(--purple);}
+.class-card.adult .tag{background:rgba(255,107,107,.1);color:var(--pink);}
+.class-card.family .tag{background:rgba(69,196,134,.12);color:var(--lime);}
+.class-card h3{font-size:18px;font-weight:700;margin:0 0 6px;color:var(--ink);}
+.class-card .meta{font-size:12.5px;color:#888;margin-bottom:10px;}
+.class-card p{font-size:13.5px;line-height:1.8;color:var(--sub);padding:0 20px 20px;margin:0;}
 
 /* ===== PRICE ===== */
 #price{
@@ -443,31 +491,29 @@ section{
 .price-card{
   background:#fff;
   border-radius:var(--radius);
-  padding:24px;
+  padding:22px;
   box-shadow:var(--shadow);
   position:relative;
-  border:3px solid #fff;
+  border:1px solid #eee7d8;
 }
 .price-card.highlight{
-  border:3px solid var(--pink);
-  transform:translateY(-4px);
+  border:2px solid var(--pink);
 }
 .price-card .badge{
   position:absolute;
-  top:-14px;
-  left:20px;
+  top:-13px;
+  left:18px;
   background:var(--pink);
   color:#fff;
-  font-size:12px;
-  font-weight:800;
-  padding:6px 14px;
+  font-size:11.5px;
+  font-weight:700;
+  padding:5px 14px;
   border-radius:50px;
-  box-shadow:var(--shadow);
 }
-.price-card h4{font-size:15px;font-weight:800;margin:8px 0 6px;color:#777;}
-.price-card .amount{font-size:30px;font-weight:900;margin:0 0 4px;}
-.price-card .amount span{font-size:14px;font-weight:700;color:#777;}
-.price-card .note{font-size:12.5px;color:#888;}
+.price-card h4{font-size:14px;font-weight:700;margin:8px 0 6px;color:var(--sub);}
+.price-card .amount{font-size:28px;font-weight:800;margin:0 0 4px;color:var(--ink);}
+.price-card .amount span{font-size:13px;font-weight:600;color:var(--sub);}
+.price-card .note{font-size:12.5px;color:#999;}
 .discount-row{
   display:flex;
   gap:12px;
@@ -478,14 +524,14 @@ section{
   flex:1;
   min-width:140px;
   background:#fff;
-  border-radius:18px;
+  border-radius:16px;
   padding:14px;
   text-align:center;
   box-shadow:var(--shadow);
-  border:2px dashed var(--blue);
+  border:1px dashed #cfc7b3;
 }
-.discount-chip .d-amount{font-size:20px;font-weight:900;color:var(--pink);}
-.discount-chip .d-label{font-size:12.5px;color:#555;font-weight:700;}
+.discount-chip .d-amount{font-size:19px;font-weight:800;color:var(--pink);}
+.discount-chip .d-label{font-size:12.5px;color:var(--sub);font-weight:600;}
 .price-cta{
   margin-top:30px;
   text-align:center;
@@ -513,12 +559,12 @@ section{
   left:14px;
   top:6px;
   bottom:6px;
-  width:3px;
-  background:repeating-linear-gradient(to bottom, var(--pink) 0 8px, transparent 8px 14px);
+  width:2px;
+  background:#e8e3d8;
 }
 .flow-step{
   position:relative;
-  margin-bottom:30px;
+  margin-bottom:28px;
 }
 .flow-step .step-num{
   position:absolute;
@@ -530,13 +576,13 @@ section{
   background:var(--ink);
   color:#fff;
   font-size:13px;
-  font-weight:900;
+  font-weight:700;
   display:flex;
   align-items:center;
   justify-content:center;
 }
-.flow-step h4{margin:0 0 6px;font-size:16px;font-weight:900;}
-.flow-step p{margin:0;font-size:13.5px;color:#555;line-height:1.8;}
+.flow-step h4{margin:0 0 6px;font-size:16px;font-weight:700;color:var(--ink);}
+.flow-step p{margin:0;font-size:13.5px;color:var(--sub);line-height:1.8;}
 
 /* ===== PROFILE ===== */
 #profile{
@@ -549,6 +595,7 @@ section{
   overflow:hidden;
   display:flex;
   flex-direction:column;
+  border:1px solid #eee7d8;
 }
 @media(min-width:640px){
   .profile-card{flex-direction:row;}
@@ -556,30 +603,34 @@ section{
 .profile-photo{
   flex:0 0 auto;
   width:100%;
+  aspect-ratio:4/3;
 }
 @media(min-width:640px){
-  .profile-photo{width:42%;}
+  .profile-photo{width:42%;aspect-ratio:auto;}
 }
-.profile-photo img{width:100%;height:100%;object-fit:cover;}
+.profile-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
 .profile-body{padding:24px;}
 .profile-body .role{
   display:inline-block;
-  background:var(--yellow);
+  background:var(--paper2);
+  color:var(--sub);
   font-size:12px;
-  font-weight:800;
+  font-weight:700;
   padding:5px 12px;
   border-radius:50px;
   margin-bottom:10px;
 }
-.profile-body h3{font-size:20px;font-weight:900;margin:0 0 10px;}
-.profile-body p{font-size:14px;line-height:1.9;color:#444;}
+.profile-body h3{font-size:19px;font-weight:700;margin:0 0 10px;color:var(--ink);}
+.profile-body p{font-size:14px;line-height:1.9;color:var(--sub);}
 .profile-msg{
   margin-top:14px;
   padding:16px;
-  background:#fff8f0;
-  border-radius:16px;
+  background:var(--paper2);
+  border-left:3px solid var(--pink);
+  border-radius:10px;
   font-size:13.5px;
-  font-weight:700;
+  font-weight:600;
+  color:var(--ink);
   line-height:1.8;
   position:relative;
 }
@@ -597,15 +648,16 @@ section{
 .voice-card{
   flex:0 0 80%;
   scroll-snap-align:center;
-  background:#fafafa;
+  background:#fff;
+  border:1px solid #eee7d8;
   border-radius:var(--radius);
   padding:22px;
   box-shadow:var(--shadow);
 }
 @media(min-width:640px){.voice-card{flex:0 0 46%;}}
-.voice-card .stars{color:var(--yellow);font-size:14px;margin-bottom:10px;}
-.voice-card p{font-size:13.5px;line-height:1.8;color:#333;margin:0 0 14px;}
-.voice-card .who{font-size:12.5px;font-weight:800;color:#777;}
+.voice-card .stars{color:var(--yellow);font-size:13px;margin-bottom:10px;letter-spacing:2px;}
+.voice-card p{font-size:13.5px;line-height:1.8;color:var(--ink);margin:0 0 14px;}
+.voice-card .who{font-size:12.5px;font-weight:700;color:var(--sub);}
 
 /* ===== LIFE world ===== */
 #life{
@@ -613,12 +665,9 @@ section{
   color:#fff;
   text-align:center;
 }
-#life .eyebrow{background:var(--lime);color:var(--ink);}
+#life .eyebrow{background:transparent;border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);}
 #life .sec-title{color:#fff;}
-#life .sec-title .accent{
-  background:linear-gradient(90deg,var(--yellow),var(--pink));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+#life .sec-title .accent{color:var(--yellow);}
 .life-photos{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -686,18 +735,21 @@ section{
 
 /* ===== FINAL CTA ===== */
 #final{
-  background:linear-gradient(135deg,var(--pink),var(--purple));
+  background:var(--ink);
   color:#fff;
   text-align:center;
 }
-#final .sec-title{color:#fff;font-size:30px;}
-#final .sec-lead{color:rgba(255,255,255,.9);}
+#final .sec-title{color:#fff;font-size:28px;}
+#final .sec-lead{color:rgba(255,255,255,.75);}
+#final .eyebrow{background:transparent;border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);}
 .final-card{
-  background:rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
   border-radius:var(--radius);
   padding:30px 22px;
-  backdrop-filter:blur(6px);
-  border:2px solid rgba(255,255,255,.3);
+  border:1px solid rgba(255,255,255,.15);
+}
+@media(min-width:640px){
+  #final .sec-title{font-size:34px;}
 }
 .final-ctas{
   display:flex;
@@ -707,8 +759,8 @@ section{
   align-items:center;
 }
 .final-ctas .btn-primary{
-  background:#fff;
-  color:var(--pink);
+  background:var(--pink);
+  color:#fff;
 }
 .final-ctas .btn-line{
   background:#06C755;
@@ -752,42 +804,38 @@ footer .logo{
 
 <!-- ===================== HERO ===================== -->
 <section id="hero">
-  <div class="float-deco" style="top:10%;left:6%;color:var(--pink);">★</div>
-  <div class="float-deco" style="top:30%;right:8%;color:var(--blue);">♪</div>
-  <div class="float-deco" style="bottom:8%;left:10%;color:var(--yellow);">●</div>
-
-  <div class="hero-photo-card" data-rotate-in>
-    <span class="sticker">2025 新生LUCKY★JAM</span>
-    <span class="sticker s2">筑紫野・太宰府</span>
-    <img src="assets/group-photo.jpg" alt="新生LUCKY★JAM DANCEのメンバー集合写真" loading="lazy">
-  </div>
+  <div class="hero-bgtype" aria-hidden="true">DANCE</div>
 
   <div class="hero-copy">
+    <span class="hero-label" data-fade-up>筑紫野・太宰府 HIPHOP DANCE TEAM</span>
     <h1 data-hero-title>
       <span class="line1">音が鳴ったら、</span>
-      <span class="line1 accent">わたしも動き出す。</span>
+      <span class="line1 accent">私の時間が動き出す。</span>
     </h1>
     <p class="hero-sub" data-fade-up>
-      筑紫野・太宰府エリアの<br>
-      子どもも大人も楽しめるHIPHOPダンスチーム。
-    </p>
-    <p class="hero-sub" data-fade-up>
-      初心者でも大丈夫。<br>
-      振り付けを<b>完璧に覚えるより</b>、<br>
-      まずは音楽と一緒に<b>笑うところから</b>。
+      子どもも、大人も。<br>
+      うまく踊るより、まず<b>楽しむ</b>。<br>
+      筑紫野・太宰府エリアのHIPHOPダンスチーム。
     </p>
 
     <div class="hero-ctas" data-fade-up>
       <a href="#price" class="btn btn-primary" data-bounce>体験レッスンを予約する（1,000円）</a>
       <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-line" data-bounce>公式LINEで相談する</a>
     </div>
+  </div>
 
-    <div class="hero-tags">
-      <span>初心者OK</span>
-      <span>30〜60代女性が活躍中</span>
-      <span>親子参加OK</span>
+  <div class="hero-photo-card" data-rotate-in>
+    <img src="assets/group-photo.jpg" alt="新生LUCKY★JAM DANCEのメンバー集合写真" loading="lazy">
+    <div class="hero-photo-caption">
+      <span>新生LUCKY★JAM DANCE</span>
       <span>筑紫野・太宰府</span>
     </div>
+  </div>
+
+  <div class="hero-tags">
+    <span>初心者OK</span>
+    <span>30〜60代女性が活躍中</span>
+    <span>親子参加OK</span>
   </div>
 </section>
 
@@ -800,7 +848,7 @@ footer .logo{
 <section id="empathy">
   <span class="eyebrow" data-pop>こんな気持ち、ありませんか？</span>
   <h2 class="sec-title" data-pop>
-    気づいたら、<br><span class="accent">「自分の時間」</span>が後回しに。
+    子どもが少し手を離れた今、<br>次は<span class="accent">“私の時間”</span>を楽しんでいい。
   </h2>
 
   <div class="empathy-card" data-fade-up>
@@ -824,7 +872,7 @@ footer .logo{
 <!-- ===================== GET ===================== -->
 <section id="get">
   <span class="eyebrow" data-pop>新生LUCKY★JAM DANCEで得られること</span>
-  <h2 class="sec-title" data-pop>踊るほど、<br><span class="accent">毎日が少し軽くなる。</span></h2>
+  <h2 class="sec-title" data-pop>ダンスは、<br><span class="accent">体より先に心が動く。</span></h2>
 
   <div class="get-grid">
     <div class="get-card c1" data-fade-up>
@@ -1078,9 +1126,9 @@ footer .logo{
 <!-- ===================== FINAL CTA ===================== -->
 <section id="final">
   <div class="final-card">
-    <span class="eyebrow" style="background:#fff;color:var(--pink);">最後にひとつだけ</span>
-    <h2 class="sec-title" data-pop>次の楽しみを、<br>ひとつ入れてみませんか。</h2>
-    <p class="sec-lead" data-fade-up>音楽が鳴ったら、わたしも動き出す。<br>その最初の一歩を、新生LUCKY★JAM DANCEで。</p>
+    <span class="eyebrow">最後にひとつだけ</span>
+    <h2 class="sec-title" data-pop>うまく踊れるかより、<br>楽しかったかどうか。</h2>
+    <p class="sec-lead" data-fade-up>音が鳴ったら、私の時間が動き出す。<br>その一歩を、新生LUCKY★JAM DANCEで。</p>
 
     <div class="final-ctas" data-fade-up>
       <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" id="line" class="btn btn-primary" data-bounce>体験レッスンを予約する（1,000円）</a>
@@ -1127,10 +1175,10 @@ window.addEventListener('DOMContentLoaded', () => {
   document.body.style.overflow='hidden';
 
   tl.from('#loadLogo span', {
-      y:30, opacity:0, scale:.5,
+      y:20, opacity:0, scale:.8,
       duration:.5,
-      stagger:0.06,
-      ease:'back.out(2)'
+      stagger:0.05,
+      ease:'power2.out'
     })
     .to('#loadIcons span', {
       y:-14,
@@ -1148,26 +1196,25 @@ window.addEventListener('DOMContentLoaded', () => {
 function playHeroIntro(){
   gsap.from('[data-rotate-in]', {
     opacity:0,
-    y:30,
-    rotate:-6,
-    duration:.8,
-    stagger:.1,
-    ease:'back.out(1.6)'
-  });
-  gsap.from('[data-hero-title] .line1', {
-    opacity:0,
     y:24,
     duration:.7,
-    stagger:.12,
-    ease:'power3.out',
-    delay:.1
+    stagger:.1,
+    ease:'power2.out'
   });
-  gsap.from('#hero [data-fade-up]', {
+  gsap.from('[data-hero-title] .line1', {
     opacity:0,
     y:20,
     duration:.7,
     stagger:.12,
-    delay:.4,
+    ease:'power2.out',
+    delay:.1
+  });
+  gsap.from('#hero [data-fade-up]', {
+    opacity:0,
+    y:18,
+    duration:.7,
+    stagger:.12,
+    delay:.3,
     ease:'power2.out'
   });
 }
@@ -1175,19 +1222,18 @@ function playHeroIntro(){
 /* ===== marquee ===== */
 gsap.to('#marqueeTrack', {
   xPercent:-50,
-  duration:18,
+  duration:36,
   repeat:-1,
   ease:'none'
 });
 
-/* ===== scroll reveal: section titles pop ===== */
+/* ===== scroll reveal: section titles ===== */
 document.querySelectorAll('[data-pop]').forEach(el => {
   gsap.from(el, {
     opacity:0,
-    scale:.85,
     y:20,
-    duration:.6,
-    ease:'back.out(1.8)',
+    duration:.7,
+    ease:'power2.out',
     scrollTrigger:{
       trigger:el,
       start:'top 85%'
@@ -1199,7 +1245,7 @@ document.querySelectorAll('[data-pop]').forEach(el => {
 document.querySelectorAll('[data-fade-up]').forEach(el => {
   gsap.from(el, {
     opacity:0,
-    y:28,
+    y:24,
     duration:.7,
     ease:'power2.out',
     scrollTrigger:{
@@ -1209,14 +1255,13 @@ document.querySelectorAll('[data-fade-up]').forEach(el => {
   });
 });
 
-/* ===== scroll reveal: rotate-in (outside hero, already handled by intro) ===== */
+/* ===== scroll reveal: photo cards (outside hero, already handled by intro) ===== */
 document.querySelectorAll('section:not(#hero) [data-rotate-in]').forEach(el => {
   gsap.from(el, {
     opacity:0,
-    y:30,
-    rotate:gsap.utils.random(-6,6),
-    duration:.8,
-    ease:'back.out(1.6)',
+    y:24,
+    duration:.7,
+    ease:'power2.out',
     scrollTrigger:{
       trigger:el,
       start:'top 90%'
@@ -1228,7 +1273,7 @@ document.querySelectorAll('section:not(#hero) [data-rotate-in]').forEach(el => {
 gsap.utils.toArray('.get-card').forEach((card,i)=>{
   gsap.from(card,{
     opacity:0,
-    y:30,
+    y:24,
     duration:.6,
     delay:i*0.05,
     ease:'power2.out',
@@ -1236,32 +1281,14 @@ gsap.utils.toArray('.get-card').forEach((card,i)=>{
   });
 });
 
-/* ===== floating deco ===== */
+/* ===== floating deco (desktop only, subtle) ===== */
 document.querySelectorAll('.float-deco').forEach((el,i)=>{
   gsap.to(el, {
-    y: i%2===0 ? -18 : 18,
-    duration: 3 + i,
+    y: i%2===0 ? -10 : 10,
+    duration: 5 + i,
     repeat:-1,
     yoyo:true,
     ease:'sine.inOut'
-  });
-});
-
-/* ===== CTA bounce on view ===== */
-document.querySelectorAll('[data-bounce]').forEach(btn=>{
-  ScrollTrigger.create({
-    trigger:btn,
-    start:'top 92%',
-    once:true,
-    onEnter:() => {
-      gsap.fromTo(btn, {scale:1}, {
-        scale:1.06,
-        duration:.25,
-        ease:'power1.out',
-        yoyo:true,
-        repeat:1
-      });
-    }
   });
 });
 
