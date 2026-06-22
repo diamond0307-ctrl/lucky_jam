@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>新生LUCKY★JAM DANCE | 筑紫野・太宰府のHIPHOPダンスチーム</title>
+<meta name="description" content="筑紫野市・太宰府エリアで子どもも大人も楽しめるHIPHOPダンスチーム、新生LUCKY★JAM DANCE。音楽が鳴ったら、わたしも動き出す。体験レッスン受付中。">
+
+<style>
+:root{
+  --pink:#ff5fa2;
+  --yellow:#ffd23f;
+  --blue:#3fa9ff;
+  --lime:#a6ff3f;
+  --purple:#b15fff;
+  --ink:#1d1d2b;
+  --paper:#fffdf7;
+  --radius:28px;
+  --shadow: 0 10px 30px rgba(29,29,43,0.12);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:"Hiragino Maru Gothic Pro","ヒラギノ丸ゴ ProN","Yu Gothic UI",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;}
+.wrap{
+  max-width:520px;
+  margin:0 auto;
+  position:relative;
+}
+@media(min-width:900px){
+  .wrap{max-width:900px;}
+}
+
+/* ===== utility shapes ===== */
+.deco{
+  position:absolute;
+  pointer-events:none;
+  z-index:1;
+}
+.deco.star::before{content:"★";}
+.float-deco{
+  position:absolute;
+  font-size:28px;
+  opacity:.55;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* ===== LOADER ===== */
+#loader{
+  position:fixed;
+  inset:0;
+  background:var(--ink);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:18px;
+  transition:opacity .5s ease;
+}
+#loader .logo-load{
+  font-size:42px;
+  font-weight:900;
+  color:var(--yellow);
+  letter-spacing:2px;
+  display:flex;
+  gap:6px;
+}
+#loader .logo-load span{display:inline-block;}
+#loader .load-icons{
+  display:flex;
+  gap:16px;
+  font-size:26px;
+}
+#loader .load-icons span{display:inline-block;}
+#loader .load-bar-wrap{
+  width:200px;
+  height:6px;
+  background:rgba(255,255,255,.15);
+  border-radius:10px;
+  overflow:hidden;
+}
+#loader .load-bar{
+  width:0%;
+  height:100%;
+  background:linear-gradient(90deg,var(--pink),var(--yellow),var(--blue));
+  border-radius:10px;
+}
+
+/* ===== NAV / fixed LINE buttons ===== */
+.line-fab{
+  position:fixed;
+  z-index:500;
+  background:#06C755;
+  color:#fff;
+  font-weight:800;
+  font-size:13px;
+  padding:12px 18px;
+  border-radius:50px;
+  box-shadow:var(--shadow);
+  display:flex;
+  align-items:center;
+  gap:6px;
+  border:3px solid #fff;
+}
+.line-fab.top{
+  top:16px;
+  right:16px;
+  padding:10px 14px;
+  font-size:12px;
+}
+.bottom-cta{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  z-index:600;
+  display:flex;
+  gap:8px;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(255,253,247,.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
+}
+.bottom-cta a{
+  flex:1;
+  text-align:center;
+  padding:14px 8px;
+  border-radius:50px;
+  font-weight:800;
+  font-size:14px;
+}
+.bottom-cta .btn-trial{
+  background:linear-gradient(90deg,var(--pink),var(--purple));
+  color:#fff;
+}
+.bottom-cta .btn-line{
+  background:#06C755;
+  color:#fff;
+}
+
+/* ===== generic buttons ===== */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:16px 28px;
+  border-radius:50px;
+  font-weight:800;
+  font-size:16px;
+  box-shadow:var(--shadow);
+  cursor:pointer;
+  border:none;
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--pink),var(--purple));
+  color:#fff;
+}
+.btn-line{
+  background:#06C755;
+  color:#fff;
+}
+.btn-outline{
+  background:#fff;
+  color:var(--ink);
+  border:2px solid var(--ink);
+}
+
+/* ===== SECTION generic ===== */
+section{
+  position:relative;
+  padding:80px 20px;
+  overflow:hidden;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.1em;
+  padding:6px 16px;
+  border-radius:50px;
+  background:var(--yellow);
+  color:var(--ink);
+  margin-bottom:14px;
+}
+.sec-title{
+  font-size:28px;
+  font-weight:900;
+  line-height:1.4;
+  margin:0 0 16px;
+}
+.sec-title .accent{
+  background:linear-gradient(90deg,var(--pink),var(--blue));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.sec-lead{
+  font-size:15px;
+  line-height:1.9;
+  color:#444;
+  margin-bottom:30px;
+}
+
+/* marquee */
+.marquee{
+  white-space:nowrap;
+  overflow:hidden;
+  position:relative;
+  font-weight:900;
+  font-size:14vw;
+  line-height:1;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--ink);
+  opacity:.08;
+  user-select:none;
+  z-index:0;
+}
+.marquee .track{
+  display:inline-block;
+  white-space:nowrap;
+}
+
+/* ===== HERO ===== */
+#hero{
+  padding-top:90px;
+  background:linear-gradient(180deg,#fff8e7 0%, var(--paper) 60%);
+}
+.hero-photo-card{
+  position:relative;
+  border-radius:32px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  transform:rotate(-2deg);
+  margin:20px 0 30px;
+  border:6px solid #fff;
+}
+.hero-photo-card img{width:100%;}
+.sticker{
+  position:absolute;
+  font-weight:900;
+  font-size:13px;
+  padding:8px 14px;
+  border-radius:50px;
+  color:#fff;
+  box-shadow:0 6px 14px rgba(0,0,0,.18);
+  z-index:5;
+}
+.hero-photo-card .sticker{
+  top:-12px;
+  left:-10px;
+  background:var(--pink);
+  transform:rotate(-8deg);
+}
+.hero-photo-card .sticker.s2{
+  top:auto;
+  bottom:-12px;
+  right:-10px;
+  left:auto;
+  background:var(--blue);
+  transform:rotate(6deg);
+}
+.hero-copy{
+  text-align:center;
+}
+.hero-copy h1{
+  font-size:34px;
+  line-height:1.45;
+  font-weight:900;
+  margin:0 0 18px;
+}
+.hero-copy h1 .line1{display:block;}
+.hero-copy h1 .accent{
+  background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+.hero-sub{
+  font-size:15px;
+  color:#333;
+  line-height:1.9;
+  margin-bottom:8px;
+}
+.hero-sub b{color:var(--pink);}
+.hero-ctas{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin:26px 0 10px;
+  align-items:center;
+}
+.hero-tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-top:18px;
+}
+.hero-tags span{
+  font-size:12px;
+  font-weight:800;
+  background:#fff;
+  border:2px solid var(--ink);
+  padding:6px 12px;
+  border-radius:50px;
+}
+
+/* ===== EMPATHY ===== */
+#empathy{background:#fff;}
+.empathy-card{
+  background:linear-gradient(135deg,#fff,#fff6fb);
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+  margin-bottom:16px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+.empathy-card .emoji{font-size:30px;flex:0 0 auto;}
+.empathy-card p{margin:0;font-size:14.5px;line-height:1.8;font-weight:600;}
+.empathy-quote{
+  text-align:center;
+  font-size:19px;
+  font-weight:900;
+  margin-top:36px;
+  line-height:1.8;
+}
+.empathy-quote .hi{color:var(--pink);}
+
+/* ===== GET (得られること) ===== */
+#get{
+  background:linear-gradient(180deg,#fff,#f4fbff);
+}
+.get-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+@media(min-width:640px){
+  .get-grid{grid-template-columns:1fr 1fr;}
+}
+.get-card{
+  background:#fff;
+  border-radius:var(--radius);
+  padding:26px 22px;
+  box-shadow:var(--shadow);
+  border:3px solid transparent;
+  position:relative;
+  overflow:hidden;
+}
+.get-card .num{
+  position:absolute;
+  top:10px;
+  right:16px;
+  font-size:42px;
+  font-weight:900;
+  opacity:.1;
+}
+.get-card h3{
+  font-size:17px;
+  font-weight:900;
+  margin:6px 0 10px;
+}
+.get-card p{
+  font-size:13.5px;
+  line-height:1.8;
+  color:#444;
+  margin:0;
+}
+.get-card .ic{font-size:30px;}
+.get-card.c1{border-color:var(--pink);}
+.get-card.c2{border-color:var(--blue);}
+.get-card.c3{border-color:var(--yellow);}
+.get-card.c4{border-color:var(--lime);}
+
+/* ===== CLASS ===== */
+#classes{background:#fff;}
+.class-scroll{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding:10px 4px 20px;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.class-scroll::-webkit-scrollbar{display:none;}
+.class-card{
+  flex:0 0 78%;
+  scroll-snap-align:center;
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  border:1px solid #f0f0f0;
+}
+@media(min-width:640px){
+  .class-card{flex:0 0 45%;}
+}
+.class-card .head{
+  padding:20px 20px 14px;
+}
+.class-card .tag{
+  display:inline-block;
+  font-size:11px;
+  font-weight:800;
+  padding:4px 12px;
+  border-radius:50px;
+  margin-bottom:8px;
+  color:#fff;
+}
+.class-card.kids .tag{background:var(--blue);}
+.class-card.teen .tag{background:var(--purple);}
+.class-card.adult .tag{background:var(--pink);}
+.class-card.family .tag{background:var(--lime);color:var(--ink);}
+.class-card h3{font-size:18px;font-weight:900;margin:0 0 6px;}
+.class-card .meta{font-size:12.5px;color:#777;margin-bottom:10px;}
+.class-card p{font-size:13.5px;line-height:1.8;color:#444;padding:0 20px 20px;margin:0;}
+
+/* ===== PRICE ===== */
+#price{
+  background:linear-gradient(180deg,#fff7e9,#fff);
+}
+.price-grid{
+  display:grid;
+  gap:16px;
+  grid-template-columns:1fr;
+}
+@media(min-width:640px){
+  .price-grid{grid-template-columns:1fr 1fr;}
+}
+.price-card{
+  background:#fff;
+  border-radius:var(--radius);
+  padding:24px;
+  box-shadow:var(--shadow);
+  position:relative;
+  border:3px solid #fff;
+}
+.price-card.highlight{
+  border:3px solid var(--pink);
+  transform:translateY(-4px);
+}
+.price-card .badge{
+  position:absolute;
+  top:-14px;
+  left:20px;
+  background:var(--pink);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  padding:6px 14px;
+  border-radius:50px;
+  box-shadow:var(--shadow);
+}
+.price-card h4{font-size:15px;font-weight:800;margin:8px 0 6px;color:#777;}
+.price-card .amount{font-size:30px;font-weight:900;margin:0 0 4px;}
+.price-card .amount span{font-size:14px;font-weight:700;color:#777;}
+.price-card .note{font-size:12.5px;color:#888;}
+.discount-row{
+  display:flex;
+  gap:12px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+.discount-chip{
+  flex:1;
+  min-width:140px;
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  border:2px dashed var(--blue);
+}
+.discount-chip .d-amount{font-size:20px;font-weight:900;color:var(--pink);}
+.discount-chip .d-label{font-size:12.5px;color:#555;font-weight:700;}
+.price-cta{
+  margin-top:30px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+}
+.price-foot{
+  text-align:center;
+  font-size:12.5px;
+  color:#888;
+  margin-top:14px;
+}
+
+/* ===== FLOW ===== */
+#flow{background:#fff;}
+.flow-list{
+  position:relative;
+  padding-left:34px;
+}
+.flow-list::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  top:6px;
+  bottom:6px;
+  width:3px;
+  background:repeating-linear-gradient(to bottom, var(--pink) 0 8px, transparent 8px 14px);
+}
+.flow-step{
+  position:relative;
+  margin-bottom:30px;
+}
+.flow-step .step-num{
+  position:absolute;
+  left:-34px;
+  top:0;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:var(--ink);
+  color:#fff;
+  font-size:13px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.flow-step h4{margin:0 0 6px;font-size:16px;font-weight:900;}
+.flow-step p{margin:0;font-size:13.5px;color:#555;line-height:1.8;}
+
+/* ===== PROFILE ===== */
+#profile{
+  background:linear-gradient(180deg,#fef4ff,#fff);
+}
+.profile-card{
+  background:#fff;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+@media(min-width:640px){
+  .profile-card{flex-direction:row;}
+}
+.profile-photo{
+  flex:0 0 auto;
+  width:100%;
+}
+@media(min-width:640px){
+  .profile-photo{width:42%;}
+}
+.profile-photo img{width:100%;height:100%;object-fit:cover;}
+.profile-body{padding:24px;}
+.profile-body .role{
+  display:inline-block;
+  background:var(--yellow);
+  font-size:12px;
+  font-weight:800;
+  padding:5px 12px;
+  border-radius:50px;
+  margin-bottom:10px;
+}
+.profile-body h3{font-size:20px;font-weight:900;margin:0 0 10px;}
+.profile-body p{font-size:14px;line-height:1.9;color:#444;}
+.profile-msg{
+  margin-top:14px;
+  padding:16px;
+  background:#fff8f0;
+  border-radius:16px;
+  font-size:13.5px;
+  font-weight:700;
+  line-height:1.8;
+  position:relative;
+}
+
+/* ===== VOICE ===== */
+#voice{background:#fff;}
+.voice-scroll{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  padding:10px 4px 20px;
+  scroll-snap-type:x mandatory;
+}
+.voice-scroll::-webkit-scrollbar{display:none;}
+.voice-card{
+  flex:0 0 80%;
+  scroll-snap-align:center;
+  background:#fafafa;
+  border-radius:var(--radius);
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+@media(min-width:640px){.voice-card{flex:0 0 46%;}}
+.voice-card .stars{color:var(--yellow);font-size:14px;margin-bottom:10px;}
+.voice-card p{font-size:13.5px;line-height:1.8;color:#333;margin:0 0 14px;}
+.voice-card .who{font-size:12.5px;font-weight:800;color:#777;}
+
+/* ===== LIFE world ===== */
+#life{
+  background:var(--ink);
+  color:#fff;
+  text-align:center;
+}
+#life .eyebrow{background:var(--lime);color:var(--ink);}
+#life .sec-title{color:#fff;}
+#life .sec-title .accent{
+  background:linear-gradient(90deg,var(--yellow),var(--pink));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.life-photos{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin:30px 0;
+}
+.life-photos img{
+  border-radius:20px;
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  box-shadow:0 10px 24px rgba(0,0,0,.4);
+}
+.life-photos .tall{
+  grid-row:span 2;
+  height:340px;
+}
+.life-quote{
+  font-size:20px;
+  font-weight:900;
+  line-height:1.8;
+  margin:30px 0;
+}
+.life-quote .em{color:var(--yellow);}
+
+/* ===== FAQ ===== */
+#faq{background:#fff;}
+.faq-item{
+  border-radius:20px;
+  background:#fafafa;
+  margin-bottom:12px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.faq-q{
+  padding:18px 20px;
+  font-weight:800;
+  font-size:14.5px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+}
+.faq-q .q-mark{
+  color:var(--pink);
+  margin-right:8px;
+}
+.faq-q .arrow{
+  transition:transform .3s ease;
+  font-size:14px;
+}
+.faq-item.open .arrow{transform:rotate(180deg);}
+.faq-a{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .35s ease;
+  padding:0 20px;
+}
+.faq-a p{
+  font-size:13.5px;
+  line-height:1.8;
+  color:#555;
+  margin:0 0 18px;
+}
+
+/* ===== FINAL CTA ===== */
+#final{
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  color:#fff;
+  text-align:center;
+}
+#final .sec-title{color:#fff;font-size:30px;}
+#final .sec-lead{color:rgba(255,255,255,.9);}
+.final-card{
+  background:rgba(255,255,255,.12);
+  border-radius:var(--radius);
+  padding:30px 22px;
+  backdrop-filter:blur(6px);
+  border:2px solid rgba(255,255,255,.3);
+}
+.final-ctas{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin-top:24px;
+  align-items:center;
+}
+.final-ctas .btn-primary{
+  background:#fff;
+  color:var(--pink);
+}
+.final-ctas .btn-line{
+  background:#06C755;
+}
+footer{
+  background:var(--ink);
+  color:rgba(255,255,255,.6);
+  text-align:center;
+  padding:40px 20px 120px;
+  font-size:12px;
+}
+footer .logo{
+  color:#fff;
+  font-weight:900;
+  font-size:18px;
+  margin-bottom:10px;
+}
+
+/* utility */
+.center{text-align:center;}
+.mt0{margin-top:0;}
+</style>
+</head>
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader">
+  <div class="logo-load" id="loadLogo">
+    <span>新</span><span>生</span><span>L</span><span>U</span><span>C</span><span>K</span><span>Y</span><span>★</span><span>J</span><span>A</span><span>M</span>
+  </div>
+  <div class="load-icons" id="loadIcons">
+    <span>♪</span><span>★</span><span>●</span><span>♬</span><span>●</span>
+  </div>
+  <div class="load-bar-wrap"><div class="load-bar" id="loadBar"></div></div>
+</div>
+
+<!-- fixed top LINE -->
+<a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="line-fab top">公式LINE</a>
+
+<div class="wrap">
+
+<!-- ===================== HERO ===================== -->
+<section id="hero">
+  <div class="float-deco" style="top:10%;left:6%;color:var(--pink);">★</div>
+  <div class="float-deco" style="top:30%;right:8%;color:var(--blue);">♪</div>
+  <div class="float-deco" style="bottom:8%;left:10%;color:var(--yellow);">●</div>
+
+  <div class="hero-photo-card" data-rotate-in>
+    <span class="sticker">2025 新生LUCKY★JAM</span>
+    <span class="sticker s2">筑紫野・太宰府</span>
+    <img src="assets/group-photo.jpg" alt="新生LUCKY★JAM DANCEのメンバー集合写真" loading="lazy">
+  </div>
+
+  <div class="hero-copy">
+    <h1 data-hero-title>
+      <span class="line1">音が鳴ったら、</span>
+      <span class="line1 accent">わたしも動き出す。</span>
+    </h1>
+    <p class="hero-sub" data-fade-up>
+      筑紫野・太宰府エリアの<br>
+      子どもも大人も楽しめるHIPHOPダンスチーム。
+    </p>
+    <p class="hero-sub" data-fade-up>
+      初心者でも大丈夫。<br>
+      振り付けを<b>完璧に覚えるより</b>、<br>
+      まずは音楽と一緒に<b>笑うところから</b>。
+    </p>
+
+    <div class="hero-ctas" data-fade-up>
+      <a href="#price" class="btn btn-primary" data-bounce>体験レッスンを予約する（1,000円）</a>
+      <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-line" data-bounce>公式LINEで相談する</a>
+    </div>
+
+    <div class="hero-tags">
+      <span>初心者OK</span>
+      <span>30〜60代女性が活躍中</span>
+      <span>親子参加OK</span>
+      <span>筑紫野・太宰府</span>
+    </div>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="track" id="marqueeTrack">HIPHOP DANCE ★ 新生LUCKY JAM ★ TSUKUSHINO ★ DAZAIFU ★ DANCE IS LIFE ★ HIPHOP DANCE ★ 新生LUCKY JAM ★ TSUKUSHINO ★ DAZAIFU ★ DANCE IS LIFE ★ </div>
+</div>
+
+<!-- ===================== EMPATHY ===================== -->
+<section id="empathy">
+  <span class="eyebrow" data-pop>こんな気持ち、ありませんか？</span>
+  <h2 class="sec-title" data-pop>
+    気づいたら、<br><span class="accent">「自分の時間」</span>が後回しに。
+  </h2>
+
+  <div class="empathy-card" data-fade-up>
+    <div class="emoji">🌀</div>
+    <p>子育てや仕事が落ち着いてきたのに、<br>新しく何かを始める勇気が出ない。</p>
+  </div>
+  <div class="empathy-card" data-fade-up>
+    <div class="emoji">💃</div>
+    <p>ダンスは好きだったけど、<br>「今の年齢からなんて遅いかな」と思ってしまう。</p>
+  </div>
+  <div class="empathy-card" data-fade-up>
+    <div class="emoji">🫶</div>
+    <p>一人で続けるのは不安。<br>でも、誰かと一緒なら踏み出せそうな気がする。</p>
+  </div>
+
+  <p class="empathy-quote" data-pop>
+    <span class="hi">大丈夫。</span>その気持ちのまま、<br>音楽の鳴る部屋に来てください。
+  </p>
+</section>
+
+<!-- ===================== GET ===================== -->
+<section id="get">
+  <span class="eyebrow" data-pop>新生LUCKY★JAM DANCEで得られること</span>
+  <h2 class="sec-title" data-pop>踊るほど、<br><span class="accent">毎日が少し軽くなる。</span></h2>
+
+  <div class="get-grid">
+    <div class="get-card c1" data-fade-up>
+      <span class="num">01</span>
+      <div class="ic">🎶</div>
+      <h3>自分の時間が増える</h3>
+      <p>週に1回、自分のためだけの時間。音楽が鳴れば、肩書きも年齢も関係なくなります。</p>
+    </div>
+    <div class="get-card c2" data-fade-up>
+      <span class="num">02</span>
+      <div class="ic">👯</div>
+      <h3>世代を超えた仲間ができる</h3>
+      <p>子どもから大人まで一緒に踊るから、家族のような温かいチーム感が生まれます。</p>
+    </div>
+    <div class="get-card c3" data-fade-up>
+      <span class="num">03</span>
+      <div class="ic">✨</div>
+      <h3>「やってみた」自信が増える</h3>
+      <p>上手さよりも挑戦したこと自体を褒め合う空気。小さな一歩が自信になります。</p>
+    </div>
+    <div class="get-card c4" data-fade-up>
+      <span class="num">04</span>
+      <div class="ic">🔥</div>
+      <h3>体も心も自然と元気に</h3>
+      <p>気づけば汗をかいて笑っている。運動不足やストレスも音楽と一緒に飛んでいきます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLASS ===================== -->
+<section id="classes">
+  <span class="eyebrow" data-pop>クラス紹介</span>
+  <h2 class="sec-title" data-pop>あなたに合う<br><span class="accent">クラスがきっとある。</span></h2>
+  <p class="sec-lead" data-fade-up>年齢や経験に合わせて、無理なく始められるクラスを用意しています。気になるクラスがあれば、体験から気軽にどうぞ。</p>
+
+  <div class="class-scroll">
+    <div class="class-card kids" data-rotate-in>
+      <div class="head">
+        <span class="tag">KIDS</span>
+        <h3>キッズクラス</h3>
+        <div class="meta">対象：小学生〜中学生</div>
+      </div>
+      <p>初めての子も大歓迎。リズム遊びから少しずつ振り付けに挑戦し、発表会やイベント出演も経験できます。</p>
+    </div>
+    <div class="class-card teen" data-rotate-in>
+      <div class="head">
+        <span class="tag">TEEN</span>
+        <h3>ティーンズクラス</h3>
+        <div class="meta">対象：中学生〜高校生</div>
+      </div>
+      <p>個性を伸ばすクラス。少し難易度の高い振り付けにも挑戦しながら、自分らしい表現を見つけていきます。</p>
+    </div>
+    <div class="class-card adult" data-rotate-in>
+      <div class="head">
+        <span class="tag">ADULT</span>
+        <h3>大人クラス</h3>
+        <div class="meta">対象：30〜60代　経験不問</div>
+      </div>
+      <p>「もう一度踊ってみたい」「初めてだけど挑戦したい」を歓迎するクラス。完璧さより楽しむ気持ちを大切にします。</p>
+    </div>
+    <div class="class-card family" data-rotate-in>
+      <div class="head">
+        <span class="tag">FAMILY</span>
+        <h3>親子・兄弟クラス</h3>
+        <div class="meta">割引あり：親子割／兄弟割 各-1,000円</div>
+      </div>
+      <p>親子や兄弟で一緒に通えるのも魅力のひとつ。家族の新しい共通の楽しみとしても人気です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRICE ===================== -->
+<section id="price">
+  <span class="eyebrow" data-pop>料金・体験予約</span>
+  <h2 class="sec-title" data-pop>まずは<br><span class="accent">1,000円の体験</span>から。</h2>
+  <p class="sec-lead" data-fade-up>レッスンの空気を感じてみてください。続けるかどうかは、体験してから決めてOKです。</p>
+
+  <div class="price-grid">
+    <div class="price-card highlight" data-fade-up>
+      <span class="badge">はじめての方へ</span>
+      <h4>体験レッスン</h4>
+      <p class="amount">1,000<span>円（税込）</span></p>
+      <p class="note">初回限定・1レッスン分</p>
+    </div>
+    <div class="price-card" data-fade-up>
+      <h4>月4回コース</h4>
+      <p class="amount">6,000<span>円（税込）/月</span></p>
+      <p class="note">週1回ペースでしっかり通いたい方に</p>
+    </div>
+    <div class="price-card" data-fade-up>
+      <h4>ビジター利用</h4>
+      <p class="amount">3,000<span>円 / 60分</span></p>
+      <p class="note">都度参加・お試し利用にも</p>
+    </div>
+    <div class="price-card" data-fade-up>
+      <h4>割引制度</h4>
+      <p class="amount" style="font-size:18px;">親子・兄弟で<br>もっとお得に</p>
+      <p class="note">下記の割引をご確認ください</p>
+    </div>
+  </div>
+
+  <div class="discount-row" data-fade-up>
+    <div class="discount-chip">
+      <div class="d-amount">-1,000円</div>
+      <div class="d-label">親子割</div>
+    </div>
+    <div class="discount-chip">
+      <div class="d-amount">-1,000円</div>
+      <div class="d-label">兄弟割</div>
+    </div>
+  </div>
+
+  <div class="price-cta" data-fade-up>
+    <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-primary" data-bounce>体験レッスンを予約する</a>
+    <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-line" data-bounce>公式LINEで相談する</a>
+  </div>
+  <p class="price-foot">予約・お問い合わせはすべて公式LINEから、やさしくご案内します。</p>
+</section>
+
+<!-- ===================== FLOW ===================== -->
+<section id="flow">
+  <span class="eyebrow" data-pop>レッスンの流れ</span>
+  <h2 class="sec-title" data-pop>当日は<br><span class="accent">手ぶらの気持ちで。</span></h2>
+
+  <div class="flow-list">
+    <div class="flow-step" data-fade-up>
+      <div class="step-num">1</div>
+      <h4>公式LINEで予約</h4>
+      <p>体験したい日時を、公式LINEから送るだけ。スタッフが丁寧に返信します。</p>
+    </div>
+    <div class="flow-step" data-fade-up>
+      <div class="step-num">2</div>
+      <h4>動きやすい服でスタジオへ</h4>
+      <p>道具は不要です。タオルとお水だけ持って、リラックスして来てください。</p>
+    </div>
+    <div class="flow-step" data-fade-up>
+      <div class="step-num">3</div>
+      <h4>ウォームアップ＆かんたんな振り</h4>
+      <p>音楽に合わせて体をほぐしながら、簡単なステップから一緒に練習します。</p>
+    </div>
+    <div class="flow-step" data-fade-up>
+      <div class="step-num">4</div>
+      <h4>音楽に乗せて踊ってみる</h4>
+      <p>最後はみんなで通して踊ります。できなくても大丈夫、その場の空気を楽しんで。</p>
+    </div>
+    <div class="flow-step" data-fade-up>
+      <div class="step-num">5</div>
+      <h4>続けるかどうかはゆっくり決めて</h4>
+      <p>体験後、無理な勧誘はしません。気持ちが向いたタイミングでご連絡ください。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROFILE ===================== -->
+<section id="profile">
+  <span class="eyebrow" data-pop>講師プロフィール</span>
+  <h2 class="sec-title" data-pop>“先生”じゃなくて、<br><span class="accent">一緒に盛り上がる仲間。</span></h2>
+
+  <div class="profile-card" data-fade-up>
+    <div class="profile-photo">
+      <img src="assets/teacher-photo.jpg" alt="新生LUCKY★JAM DANCEチームリーダーの写真" loading="lazy">
+    </div>
+    <div class="profile-body">
+      <span class="role">チームリーダー</span>
+      <h3>新生LUCKY★JAM DANCE 主宰</h3>
+      <p>
+        筑紫野・太宰府エリアを中心に、子どもから大人まで一緒に楽しめる場をつくりたくて、このチームを始めました。<br><br>
+        踊りが上手いことより、「今日も来てよかった」と思える時間をつくることを大事にしています。
+      </p>
+      <div class="profile-msg">
+        “上手く踊れなくても、笑っていればそれで100点。<br>
+        みんなで音楽に乗っかる、そのチームのテンションが好きです。”
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VOICE ===================== -->
+<section id="voice">
+  <span class="eyebrow" data-pop>参加者の声</span>
+  <h2 class="sec-title" data-pop>始めてみたら、<br><span class="accent">こんな変化がありました。</span></h2>
+
+  <div class="voice-scroll">
+    <div class="voice-card" data-fade-up>
+      <div class="stars">★★★★★</div>
+      <p>「子どもが小学校を卒業して時間ができたタイミングで参加。最初は緊張しましたが、すぐに馴染めて、毎週が楽しみになりました。」</p>
+      <div class="who">40代・女性</div>
+    </div>
+    <div class="voice-card" data-fade-up>
+      <div class="stars">★★★★★</div>
+      <p>「運動経験ゼロでしたが、先生がとにかく明るくて、できなくても笑って終われる。気づいたら体力もついていました。」</p>
+      <div class="who">50代・女性</div>
+    </div>
+    <div class="voice-card" data-fade-up>
+      <div class="stars">★★★★★</div>
+      <p>「娘と一緒に通っています。親子で同じことに挑戦する時間が、思っていたよりずっと特別でした。」</p>
+      <div class="who">親子参加・30代女性</div>
+    </div>
+    <div class="voice-card" data-fade-up>
+      <div class="stars">★★★★★</div>
+      <p>「年齢を気にして踊るのを諦めていましたが、ここなら大丈夫でした。仲間ができたのが一番嬉しいです。」</p>
+      <div class="who">60代・女性</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LIFE ===================== -->
+<section id="life">
+  <span class="eyebrow" data-pop>DANCE is LIFE</span>
+  <h2 class="sec-title" data-pop>踊ることは、<br><span class="accent">生きることそのもの。</span></h2>
+
+  <div class="life-photos">
+    <img class="tall" src="assets/stage-photo-1.jpg" alt="ステージで踊るメンバーの写真" loading="lazy" data-rotate-in>
+    <img src="assets/event-photo-1.jpg" alt="イベントで写真撮影をするメンバー" loading="lazy" data-rotate-in>
+    <img src="assets/event-photo-2.jpg" alt="展示会で記念撮影をするメンバー" loading="lazy" data-rotate-in>
+  </div>
+
+  <p class="life-quote" data-pop>
+    完璧な振りより、<span class="em">心からの一歩</span>を。<br>
+    音楽が鳴れば、誰だって主人公になれる。
+  </p>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq">
+  <span class="eyebrow" data-pop>よくある質問</span>
+  <h2 class="sec-title" data-pop>はじめる前の<br><span class="accent">小さな不安に答えます。</span></h2>
+
+  <div class="faq-item">
+    <div class="faq-q"><span><span class="q-mark">Q.</span>ダンス未経験でも大丈夫ですか？</span><span class="arrow">▼</span></div>
+    <div class="faq-a"><p>もちろんです。メンバーの多くが未経験からスタートしています。簡単な動きから始めるので安心してください。</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span><span class="q-mark">Q.</span>年齢的に浮きませんか？</span><span class="arrow">▼</span></div>
+    <div class="faq-a"><p>30〜60代の女性メンバーも多く活躍しています。子どもクラスとは別に大人クラスもあるのでご安心ください。</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span><span class="q-mark">Q.</span>体験レッスンの持ち物は？</span><span class="arrow">▼</span></div>
+    <div class="faq-a"><p>動きやすい服装と運動シューズ、タオル・お水があれば十分です。特別な道具は不要です。</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span><span class="q-mark">Q.</span>体験後に必ず入会しないといけませんか？</span><span class="arrow">▼</span></div>
+    <div class="faq-a"><p>いいえ、無理な勧誘はしません。体験して感じたことを大切に、ゆっくり決めてください。</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q"><span><span class="q-mark">Q.</span>子どもと一緒に参加できますか？</span><span class="arrow">▼</span></div>
+    <div class="faq-a"><p>はい。親子クラスや兄弟割もご用意していますので、ぜひ公式LINEでご相談ください。</p></div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section id="final">
+  <div class="final-card">
+    <span class="eyebrow" style="background:#fff;color:var(--pink);">最後にひとつだけ</span>
+    <h2 class="sec-title" data-pop>次の楽しみを、<br>ひとつ入れてみませんか。</h2>
+    <p class="sec-lead" data-fade-up>音楽が鳴ったら、わたしも動き出す。<br>その最初の一歩を、新生LUCKY★JAM DANCEで。</p>
+
+    <div class="final-ctas" data-fade-up>
+      <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" id="line" class="btn btn-primary" data-bounce>体験レッスンを予約する（1,000円）</a>
+      <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-line" data-bounce>公式LINEで相談する</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img src="assets/logo.jpg" alt="新生LUCKY★JAM DANCEロゴ" style="width:90px;margin:0 auto 14px;border-radius:12px;">
+  <div class="logo">新生LUCKY★JAM DANCE</div>
+  <p>筑紫野市・太宰府エリア　HIPHOPダンスチーム</p>
+  <p>&copy; 新生LUCKY★JAM DANCE</p>
+</footer>
+
+</div><!-- /wrap -->
+
+<!-- bottom fixed CTA -->
+<div class="bottom-cta">
+  <a href="#price" class="btn-trial">体験レッスン予約</a>
+  <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn-line">公式LINE</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ===== LOADER ===== */
+window.addEventListener('DOMContentLoaded', () => {
+  const tl = gsap.timeline({
+    onComplete: () => {
+      gsap.to('#loader', {
+        opacity:0,
+        duration:.6,
+        onComplete: () => {
+          document.getElementById('loader').style.display='none';
+          document.body.style.overflow='auto';
+          playHeroIntro();
+        }
+      });
+    }
+  });
+  document.body.style.overflow='hidden';
+
+  tl.from('#loadLogo span', {
+      y:30, opacity:0, scale:.5,
+      duration:.5,
+      stagger:0.06,
+      ease:'back.out(2)'
+    })
+    .to('#loadIcons span', {
+      y:-14,
+      duration:.4,
+      stagger:{each:.08, yoyo:true, repeat:3},
+      ease:'sine.inOut'
+    }, '-=0.2')
+    .to('#loadBar', {
+      width:'100%',
+      duration:1,
+      ease:'power1.inOut'
+    }, '-=0.6');
+});
+
+function playHeroIntro(){
+  gsap.from('[data-rotate-in]', {
+    opacity:0,
+    y:30,
+    rotate:-6,
+    duration:.8,
+    stagger:.1,
+    ease:'back.out(1.6)'
+  });
+  gsap.from('[data-hero-title] .line1', {
+    opacity:0,
+    y:24,
+    duration:.7,
+    stagger:.12,
+    ease:'power3.out',
+    delay:.1
+  });
+  gsap.from('#hero [data-fade-up]', {
+    opacity:0,
+    y:20,
+    duration:.7,
+    stagger:.12,
+    delay:.4,
+    ease:'power2.out'
+  });
+}
+
+/* ===== marquee ===== */
+gsap.to('#marqueeTrack', {
+  xPercent:-50,
+  duration:18,
+  repeat:-1,
+  ease:'none'
+});
+
+/* ===== scroll reveal: section titles pop ===== */
+document.querySelectorAll('[data-pop]').forEach(el => {
+  gsap.from(el, {
+    opacity:0,
+    scale:.85,
+    y:20,
+    duration:.6,
+    ease:'back.out(1.8)',
+    scrollTrigger:{
+      trigger:el,
+      start:'top 85%'
+    }
+  });
+});
+
+/* ===== scroll reveal: fade up ===== */
+document.querySelectorAll('[data-fade-up]').forEach(el => {
+  gsap.from(el, {
+    opacity:0,
+    y:28,
+    duration:.7,
+    ease:'power2.out',
+    scrollTrigger:{
+      trigger:el,
+      start:'top 88%'
+    }
+  });
+});
+
+/* ===== scroll reveal: rotate-in (outside hero, already handled by intro) ===== */
+document.querySelectorAll('section:not(#hero) [data-rotate-in]').forEach(el => {
+  gsap.from(el, {
+    opacity:0,
+    y:30,
+    rotate:gsap.utils.random(-6,6),
+    duration:.8,
+    ease:'back.out(1.6)',
+    scrollTrigger:{
+      trigger:el,
+      start:'top 90%'
+    }
+  });
+});
+
+/* ===== cards generic stagger (get/price/class/voice) ===== */
+gsap.utils.toArray('.get-card').forEach((card,i)=>{
+  gsap.from(card,{
+    opacity:0,
+    y:30,
+    duration:.6,
+    delay:i*0.05,
+    ease:'power2.out',
+    scrollTrigger:{trigger:card, start:'top 90%'}
+  });
+});
+
+/* ===== floating deco ===== */
+document.querySelectorAll('.float-deco').forEach((el,i)=>{
+  gsap.to(el, {
+    y: i%2===0 ? -18 : 18,
+    duration: 3 + i,
+    repeat:-1,
+    yoyo:true,
+    ease:'sine.inOut'
+  });
+});
+
+/* ===== CTA bounce on view ===== */
+document.querySelectorAll('[data-bounce]').forEach(btn=>{
+  ScrollTrigger.create({
+    trigger:btn,
+    start:'top 92%',
+    once:true,
+    onEnter:() => {
+      gsap.fromTo(btn, {scale:1}, {
+        scale:1.06,
+        duration:.25,
+        ease:'power1.out',
+        yoyo:true,
+        repeat:1
+      });
+    }
+  });
+});
+
+/* ===== FAQ accordion ===== */
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    const ans = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(o=>{
+      if(o!==item){
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight=null;
+      }
+    });
+    if(isOpen){
+      item.classList.remove('open');
+      ans.style.maxHeight=null;
+    } else {
+      item.classList.add('open');
+      ans.style.maxHeight = ans.scrollHeight+'px';
+    }
+  });
+});
+</script>
+</body>
+</html>
