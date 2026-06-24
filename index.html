@@ -4,1315 +4,1044 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>新生LUCKY★JAM DANCE | 筑紫野・太宰府のHIPHOPダンスチーム</title>
-<meta name="description" content="筑紫野市・太宰府エリアで子どもも大人も楽しめるHIPHOPダンスチーム、新生LUCKY★JAM DANCE。音楽が鳴ったら、わたしも動き出す。体験レッスン受付中。">
-
+<meta name="description" content="筑紫野・太宰府エリアのHIPHOPダンスチーム、新生LUCKY★JAM DANCE。初心者、親子、大人からの挑戦も歓迎。体験レッスン受付中。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Dela+Gothic+One&family=Noto+Sans+JP:wght@400;500;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pink:#FF6B6B;
-  --yellow:#FFD34E;
-  --blue:#3D8BFF;
-  --lime:#45C486;
-  --purple:#8A6CFF;
-  --ink:#222222;
-  --sub:#555555;
-  --paper:#FAF8F3;
-  --paper2:#F7F3EA;
-  --radius:20px;
-  --shadow: 0 6px 20px rgba(34,34,34,0.08);
+  --black:#0B0B0D;
+  --charcoal:#151518;
+  --dark-gray:#232326;
+  --white:#F7F7F2;
+  --muted:#B8B8B0;
+  --neon:#D7FF2F;
+  --red:#FF3B30;
+  --line:#06C755;
+  --line-soft:rgba(247,247,242,.14);
+  --edge:rgba(247,247,242,.18);
+  --font-en:"Bebas Neue","Oswald",sans-serif;
+  --font-jp:"Noto Sans JP","Zen Kaku Gothic New",sans-serif;
+  --font-impact:"Bebas Neue","Oswald","Noto Sans JP",sans-serif;
 }
-*{box-sizing:border-box;}
-html,body{margin:0;padding:0;}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--black)}
 body{
-  font-family:"Hiragino Maru Gothic Pro","ヒラギノ丸ゴ ProN","Yu Gothic UI",sans-serif;
-  background:var(--paper);
-  color:var(--ink);
+  margin:0;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(215,255,47,.08),transparent 28rem),
+    radial-gradient(circle at 10% 14%,rgba(255,59,48,.08),transparent 24rem),
+    var(--black);
+  color:var(--white);
+  font-family:var(--font-jp);
   overflow-x:hidden;
   -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
-img{max-width:100%;display:block;}
-a{text-decoration:none;color:inherit;}
-button{font-family:inherit;}
-.wrap{
-  max-width:520px;
-  margin:0 auto;
-  position:relative;
-}
-@media(min-width:900px){
-  .wrap{max-width:900px;}
-}
-
-/* ===== utility shapes ===== */
-.deco{
-  position:absolute;
-  pointer-events:none;
-  z-index:1;
-}
-.deco.star::before{content:"★";}
-.float-deco{
-  position:absolute;
-  font-size:20px;
-  opacity:.25;
-  z-index:0;
-  pointer-events:none;
-  color:#ccc;
-}
-@media(max-width:640px){
-  .float-deco{display:none;}
-}
-
-/* ===== LOADER ===== */
-#loader{
+body::before{
+  content:"";
   position:fixed;
   inset:0;
-  background:var(--ink);
-  z-index:9999;
-  display:flex;
+  pointer-events:none;
+  z-index:0;
+  opacity:.14;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:38px 38px;
+  mask-image:linear-gradient(to bottom,#000,transparent 78%);
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button,input{font:inherit}
+.page{position:relative;z-index:2;overflow:hidden}
+.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}
+.section{position:relative;padding:88px 0}
+.section.dark{background:var(--black)}
+.section.charcoal{background:var(--charcoal)}
+.section.paper{background:var(--white);color:var(--black)}
+.section-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--neon);
+  font-family:var(--font-en);
+  font-size:18px;
+  letter-spacing:.08em;
+  line-height:1;
+  text-transform:uppercase;
+}
+.section-kicker::before{
+  content:"";
+  width:34px;
+  height:2px;
+  background:currentColor;
+}
+.section-title{
+  margin:14px 0 18px;
+  font-family:var(--font-impact);
+  font-size:clamp(30px,8vw,66px);
+  line-height:1.18;
+  font-weight:900;
+  letter-spacing:.01em;
+  max-width:100%;
+  overflow-wrap:break-word;
+}
+.section-lead{
+  margin:0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:2;
+  max-width:680px;
+}
+.paper .section-lead{color:#555}
+.outline-word{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  top:16px;
+  z-index:0;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(247,247,242,.11);
+  font-family:var(--font-en);
+  font-size:clamp(90px,24vw,300px);
+  line-height:.8;
+  letter-spacing:.03em;
+  white-space:nowrap;
+  pointer-events:none;
+}
+.btn{
+  position:relative;
+  isolation:isolate;
+  display:inline-flex;
+  min-height:56px;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
-  gap:18px;
-  transition:opacity .5s ease;
-}
-#loader .logo-load{
-  font-size:42px;
+  gap:10px;
+  padding:16px 24px;
+  border:1px solid transparent;
+  border-radius:4px;
   font-weight:900;
-  color:var(--yellow);
-  letter-spacing:2px;
-  display:flex;
-  gap:6px;
-}
-#loader .logo-load span{display:inline-block;}
-#loader .load-icons{
-  display:flex;
-  gap:16px;
-  font-size:26px;
-}
-#loader .load-icons span{display:inline-block;}
-#loader .load-bar-wrap{
-  width:200px;
-  height:6px;
-  background:rgba(255,255,255,.15);
-  border-radius:10px;
+  font-size:15px;
   overflow:hidden;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease;
 }
-#loader .load-bar{
-  width:0%;
-  height:100%;
-  background:linear-gradient(90deg,var(--pink),var(--yellow),var(--blue));
-  border-radius:10px;
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:-30% auto -30% -55%;
+  width:42%;
+  transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+  z-index:-1;
 }
-
-/* ===== NAV / fixed LINE buttons ===== */
+.btn:hover{transform:translateY(2px)}
+.btn-primary{
+  background:var(--neon);
+  color:var(--black);
+  border-color:var(--neon);
+}
+.btn-line{
+  background:var(--line);
+  color:#fff;
+  border-color:var(--line);
+}
+.btn-ghost{
+  background:rgba(247,247,242,.06);
+  color:var(--white);
+  border-color:var(--edge);
+}
 .line-fab{
   position:fixed;
-  z-index:500;
-  background:#06C755;
-  color:#fff;
-  font-weight:800;
-  font-size:13px;
-  padding:12px 18px;
-  border-radius:50px;
-  box-shadow:var(--shadow);
-  display:flex;
-  align-items:center;
-  gap:6px;
-  border:3px solid #fff;
-}
-.line-fab.top{
-  top:16px;
-  right:16px;
-  padding:10px 14px;
-  font-size:12px;
-}
-.bottom-cta{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:600;
-  display:flex;
-  gap:8px;
-  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
-  background:rgba(255,253,247,.92);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 -6px 20px rgba(0,0,0,0.08);
-}
-.bottom-cta a{
-  flex:1;
-  text-align:center;
-  padding:14px 8px;
-  border-radius:50px;
-  font-weight:800;
-  font-size:14px;
-}
-.bottom-cta .btn-trial{
-  background:linear-gradient(90deg,var(--pink),var(--purple));
-  color:#fff;
-}
-.bottom-cta .btn-line{
-  background:#06C755;
-  color:#fff;
-}
-
-/* ===== generic buttons ===== */
-.btn{
+  top:18px;
+  right:18px;
+  z-index:90;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:8px;
-  padding:16px 28px;
-  border-radius:50px;
-  font-weight:800;
-  font-size:16px;
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  border:none;
-}
-.btn-primary{
-  background:linear-gradient(90deg,var(--pink),var(--purple));
+  min-height:46px;
+  padding:12px 16px;
+  border-radius:4px;
+  background:var(--line);
   color:#fff;
-}
-.btn-line{
-  background:#06C755;
-  color:#fff;
-}
-.btn-outline{
-  background:#fff;
-  color:var(--ink);
-  border:2px solid var(--ink);
-}
-
-/* ===== SECTION generic ===== */
-section{
-  position:relative;
-  padding:80px 20px;
-  overflow:hidden;
-}
-.eyebrow{
-  display:inline-block;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.05em;
-  padding:6px 14px;
-  border-radius:50px;
-  background:#fff;
-  border:1px solid #e8e3d8;
-  color:var(--sub);
-  margin-bottom:14px;
-}
-.sec-title{
-  font-size:26px;
-  font-weight:800;
-  line-height:1.45;
-  margin:0 0 16px;
-  color:var(--ink);
-}
-.sec-title .accent{
-  color:var(--pink);
-}
-.sec-lead{
-  font-size:15px;
-  line-height:1.85;
-  color:var(--sub);
-  margin-bottom:30px;
-}
-@media(min-width:640px){
-  .sec-title{font-size:34px;}
-}
-
-/* marquee */
-.marquee{
-  white-space:nowrap;
-  overflow:hidden;
-  position:relative;
-  font-weight:800;
-  font-size:28px;
-  line-height:1;
-  color:transparent;
-  -webkit-text-stroke:1px var(--ink);
-  opacity:.10;
-  user-select:none;
-  z-index:0;
-  padding:14px 0;
-  background:var(--paper2);
-}
-.marquee .track{
-  display:inline-block;
-  white-space:nowrap;
-}
-
-/* ===== HERO ===== */
-#hero{
-  padding:64px 20px 56px;
-  background:var(--paper);
-  position:relative;
-}
-.hero-bgtype{
-  position:absolute;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:clamp(60px,22vw,160px);
   font-weight:900;
-  color:rgba(34,34,34,0.04);
-  letter-spacing:.02em;
-  white-space:nowrap;
-  z-index:0;
-  pointer-events:none;
-  user-select:none;
+  font-size:13px;
+  box-shadow:0 18px 38px rgba(0,0,0,.34);
 }
-.hero-copy{
-  text-align:center;
-  position:relative;
-  z-index:1;
+.bottom-cta{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:100;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:8px;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(11,11,13,.9);
+  border-top:1px solid rgba(247,247,242,.13);
+  backdrop-filter:blur(14px);
 }
-.hero-label{
-  display:inline-block;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.05em;
-  color:var(--sub);
-  background:#fff;
-  border:1px solid #e8e3d8;
-  padding:6px 14px;
-  border-radius:50px;
-  margin-bottom:18px;
-}
-.hero-copy h1{
-  font-size:36px;
-  line-height:1.4;
-  font-weight:800;
-  margin:0 0 18px;
-  color:var(--ink);
-}
-.hero-copy h1 .line1{display:block;}
-.hero-copy h1 .accent{
-  color:var(--pink);
-}
-.hero-sub{
-  font-size:15px;
-  color:var(--sub);
-  line-height:1.85;
-  margin-bottom:8px;
-}
-.hero-sub b{color:var(--ink);font-weight:700;}
-.hero-ctas{
+.bottom-cta a{
+  min-height:52px;
   display:flex;
-  flex-direction:column;
-  gap:12px;
-  margin:26px 0 28px;
   align-items:center;
+  justify-content:center;
+  border-radius:4px;
+  font-weight:900;
+  font-size:14px;
 }
-.hero-photo-card{
-  position:relative;
-  border-radius:var(--radius);
+.bottom-cta .trial{background:var(--neon);color:var(--black)}
+.bottom-cta .line{background:#fff;color:var(--black)}
+
+/* loader */
+#loader{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:grid;
+  place-items:center;
+  background:var(--black);
+  color:var(--white);
+}
+.loader-inner{text-align:center}
+.loader-logo{
+  font-family:var(--font-en);
+  font-size:clamp(54px,15vw,138px);
+  line-height:.82;
+  letter-spacing:.04em;
+}
+.loader-bar{
+  width:min(320px,72vw);
+  height:2px;
+  margin:28px auto 0;
+  background:rgba(255,255,255,.16);
   overflow:hidden;
-  box-shadow:var(--shadow);
-  margin:0 0 22px;
-  aspect-ratio:4/5;
 }
-.hero-photo-card img{
+.loader-bar span{display:block;width:0;height:100%;background:var(--neon)}
+
+/* hero */
+.hero{
+  min-height:100svh;
+  display:flex;
+  align-items:flex-end;
+  padding:96px 0 86px;
+  background:var(--black);
+}
+.hero-media{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+.hero-media img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:center 18%;
+  object-position:center center;
+  filter:saturate(.96) contrast(1.1) brightness(.98);
+  transform:scale(1.08);
 }
-.hero-photo-caption{
-  position:absolute;
-  left:14px;
-  bottom:14px;
-  right:14px;
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  z-index:5;
-}
-.hero-photo-caption span{
-  font-size:11.5px;
-  font-weight:700;
-  padding:6px 12px;
-  border-radius:50px;
-  color:#fff;
-  background:rgba(34,34,34,0.62);
-  backdrop-filter:blur(2px);
-  white-space:nowrap;
-}
-.hero-tags{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-top:4px;
-}
-.hero-tags span{
-  font-size:11.5px;
-  font-weight:700;
-  background:#fff;
-  border:1px solid #e8e3d8;
-  color:var(--sub);
-  padding:6px 12px;
-  border-radius:50px;
-}
-@media(min-width:640px){
-  .hero-copy h1{font-size:48px;}
-  .hero-photo-card{aspect-ratio:16/9;}
-}
-@media(min-width:1024px){
-  .hero-copy h1{font-size:64px;}
-}
-
-/* ===== EMPATHY ===== */
-#empathy{background:#fff;}
-.empathy-card{
-  background:#fff;
-  border:1px solid #eee7d8;
-  border-radius:var(--radius);
-  padding:20px;
-  box-shadow:var(--shadow);
-  margin-bottom:14px;
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
-}
-.empathy-card .emoji{font-size:26px;flex:0 0 auto;}
-.empathy-card p{margin:0;font-size:14.5px;line-height:1.8;font-weight:500;color:var(--ink);}
-.empathy-quote{
-  text-align:center;
-  font-size:18px;
-  font-weight:700;
-  margin-top:34px;
-  line-height:1.9;
-  color:var(--ink);
-}
-.empathy-quote .hi{color:var(--pink);}
-
-/* ===== GET (得られること) ===== */
-#get{
-  background:linear-gradient(180deg,#fff,#f4fbff);
-}
-.get-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
-}
-@media(min-width:640px){
-  .get-grid{grid-template-columns:1fr 1fr;}
-}
-.get-card{
-  background:#fff;
-  border-radius:var(--radius);
-  padding:24px 22px;
-  box-shadow:var(--shadow);
-  border:1px solid #eee7d8;
-  border-left:4px solid transparent;
-  position:relative;
-  overflow:hidden;
-}
-.get-card .num{
-  position:absolute;
-  top:14px;
-  right:18px;
-  font-size:13px;
-  font-weight:700;
-  color:#ccc;
-}
-.get-card h3{
-  font-size:17px;
-  font-weight:700;
-  margin:6px 0 10px;
-  color:var(--ink);
-}
-.get-card p{
-  font-size:13.5px;
-  line-height:1.8;
-  color:var(--sub);
-  margin:0;
-}
-.get-card .ic{font-size:26px;}
-.get-card.c1{border-left-color:var(--pink);}
-.get-card.c2{border-left-color:var(--blue);}
-.get-card.c3{border-left-color:var(--yellow);}
-.get-card.c4{border-left-color:var(--lime);}
-
-/* ===== CLASS ===== */
-#classes{background:#fff;}
-.class-scroll{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-  padding:10px 4px 20px;
-  scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;
-}
-.class-scroll::-webkit-scrollbar{display:none;}
-.class-card{
-  flex:0 0 78%;
-  scroll-snap-align:center;
-  background:#fff;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  overflow:hidden;
-  border:1px solid #eee7d8;
-}
-@media(min-width:640px){
-  .class-card{flex:0 0 45%;}
-}
-.class-card .head{
-  padding:20px 20px 14px;
-}
-.class-card .tag{
-  display:inline-block;
-  font-size:11px;
-  font-weight:700;
-  padding:4px 12px;
-  border-radius:50px;
-  margin-bottom:8px;
-}
-.class-card.kids .tag{background:rgba(61,139,255,.1);color:var(--blue);}
-.class-card.teen .tag{background:rgba(138,108,255,.1);color:var(--purple);}
-.class-card.adult .tag{background:rgba(255,107,107,.1);color:var(--pink);}
-.class-card.family .tag{background:rgba(69,196,134,.12);color:var(--lime);}
-.class-card h3{font-size:18px;font-weight:700;margin:0 0 6px;color:var(--ink);}
-.class-card .meta{font-size:12.5px;color:#888;margin-bottom:10px;}
-.class-card p{font-size:13.5px;line-height:1.8;color:var(--sub);padding:0 20px 20px;margin:0;}
-
-/* ===== PRICE ===== */
-#price{
-  background:linear-gradient(180deg,#fff7e9,#fff);
-}
-.price-grid{
-  display:grid;
-  gap:16px;
-  grid-template-columns:1fr;
-}
-@media(min-width:640px){
-  .price-grid{grid-template-columns:1fr 1fr;}
-}
-.price-card{
-  background:#fff;
-  border-radius:var(--radius);
-  padding:22px;
-  box-shadow:var(--shadow);
-  position:relative;
-  border:1px solid #eee7d8;
-}
-.price-card.highlight{
-  border:2px solid var(--pink);
-}
-.price-card .badge{
-  position:absolute;
-  top:-13px;
-  left:18px;
-  background:var(--pink);
-  color:#fff;
-  font-size:11.5px;
-  font-weight:700;
-  padding:5px 14px;
-  border-radius:50px;
-}
-.price-card h4{font-size:14px;font-weight:700;margin:8px 0 6px;color:var(--sub);}
-.price-card .amount{font-size:28px;font-weight:800;margin:0 0 4px;color:var(--ink);}
-.price-card .amount span{font-size:13px;font-weight:600;color:var(--sub);}
-.price-card .note{font-size:12.5px;color:#999;}
-.discount-row{
-  display:flex;
-  gap:12px;
-  margin-top:18px;
-  flex-wrap:wrap;
-}
-.discount-chip{
-  flex:1;
-  min-width:140px;
-  background:#fff;
-  border-radius:16px;
-  padding:14px;
-  text-align:center;
-  box-shadow:var(--shadow);
-  border:1px dashed #cfc7b3;
-}
-.discount-chip .d-amount{font-size:19px;font-weight:800;color:var(--pink);}
-.discount-chip .d-label{font-size:12.5px;color:var(--sub);font-weight:600;}
-.price-cta{
-  margin-top:30px;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  align-items:center;
-}
-.price-foot{
-  text-align:center;
-  font-size:12.5px;
-  color:#888;
-  margin-top:14px;
-}
-
-/* ===== FLOW ===== */
-#flow{background:#fff;}
-.flow-list{
-  position:relative;
-  padding-left:34px;
-}
-.flow-list::before{
+.hero-media::after{
   content:"";
   position:absolute;
-  left:14px;
-  top:6px;
-  bottom:6px;
-  width:2px;
-  background:#e8e3d8;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(11,11,13,.92) 0%,rgba(11,11,13,.7) 38%,rgba(11,11,13,.2) 74%,rgba(11,11,13,.78) 100%),
+    linear-gradient(0deg,rgba(11,11,13,1) 0%,transparent 42%,rgba(11,11,13,.66) 100%);
 }
-.flow-step{
-  position:relative;
-  margin-bottom:28px;
-}
-.flow-step .step-num{
+.hero-outline{
   position:absolute;
-  left:-34px;
-  top:0;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:var(--ink);
-  color:#fff;
-  font-size:13px;
-  font-weight:700;
-  display:flex;
+  top:10vh;
+  left:-4vw;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(247,247,242,.16);
+  font-family:var(--font-en);
+  font-size:clamp(104px,24vw,320px);
+  line-height:.78;
+  letter-spacing:.02em;
+  white-space:nowrap;
+  opacity:.9;
+}
+.hero-content{
+  position:relative;
+  z-index:4;
+  width:min(1080px,calc(100% - 40px));
+  margin:0 auto;
+}
+.hero-kicker{
+  display:inline-flex;
   align-items:center;
-  justify-content:center;
+  gap:10px;
+  padding:9px 12px;
+  border:1px solid rgba(247,247,242,.22);
+  background:rgba(11,11,13,.42);
+  color:var(--neon);
+  font-family:var(--font-en);
+  font-size:18px;
+  letter-spacing:.08em;
+  backdrop-filter:blur(10px);
 }
-.flow-step h4{margin:0 0 6px;font-size:16px;font-weight:700;color:var(--ink);}
-.flow-step p{margin:0;font-size:13.5px;color:var(--sub);line-height:1.8;}
-
-/* ===== PROFILE ===== */
-#profile{
-  background:linear-gradient(180deg,#fef4ff,#fff);
+.hero-title{
+  margin:22px 0 20px;
+  max-width:900px;
+  font-family:var(--font-impact);
+  font-size:clamp(40px,8.2vw,86px);
+  line-height:1.05;
+  font-weight:900;
+  letter-spacing:.01em;
+  text-wrap:balance;
+  text-shadow:0 18px 42px rgba(0,0,0,.55);
 }
-.profile-card{
-  background:#fff;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
+.hero-title .red{color:var(--red)}
+.hero-copy{
+  max-width:680px;
+  color:rgba(247,247,242,.84);
+  font-size:15.5px;
+  line-height:2;
+  margin:0 0 26px;
+}
+.hero-shot{
+  position:relative;
+  width:min(100%,520px);
+  height:172px;
+  margin:20px 0 22px;
   overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  border:1px solid #eee7d8;
+  clip-path:polygon(0 8%,100% 0,94% 100%,0 92%);
+  background:var(--dark-gray);
 }
-@media(min-width:640px){
-  .profile-card{flex-direction:row;}
+.hero-shot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 58%;
+  filter:saturate(.95) contrast(1.12) brightness(.82);
+}
+.hero-shot::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.58),transparent 58%);
+}
+.hero-shot span{
+  position:absolute;
+  left:14px;
+  bottom:12px;
+  z-index:2;
+  color:var(--neon);
+  font-family:var(--font-en);
+  font-size:24px;
+  letter-spacing:.06em;
+}
+.tag-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 28px;
+  padding:0;
+  list-style:none;
+}
+.tag-row li{
+  border:1px solid rgba(247,247,242,.22);
+  background:rgba(247,247,242,.08);
+  color:var(--white);
+  padding:8px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+}
+.hero-actions{display:flex;flex-direction:column;gap:10px;max-width:420px}
+.hero-scroll{
+  position:absolute;
+  right:20px;
+  bottom:90px;
+  z-index:4;
+  writing-mode:vertical-rl;
+  font-family:var(--font-en);
+  letter-spacing:.14em;
+  color:rgba(247,247,242,.55);
+  font-size:15px;
+}
+
+/* photo experience */
+.photo-rush{
+  padding:74px 0 90px;
+  background:var(--black);
+}
+.photo-head{padding:0 20px 28px}
+.photo-head .section-title{font-family:var(--font-en);font-size:clamp(58px,14vw,148px);line-height:.82;margin-bottom:20px}
+.rush-row{
+  display:flex;
+  width:max-content;
+  gap:16px;
+  padding:8px 0;
+  will-change:transform;
+}
+.rush-row + .rush-row{margin-top:8px}
+.photo-tile{
+  position:relative;
+  flex:0 0 auto;
+  width:240px;
+  height:168px;
+  overflow:hidden;
+  background:var(--dark-gray);
+}
+.photo-tile.tall{width:188px;height:246px}
+.photo-tile.wide{width:310px;height:188px}
+.photo-tile img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.9) contrast(1.12) brightness(.72);
+}
+.photo-tile::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 58%);
+}
+.photo-tile b{
+  position:absolute;
+  left:12px;
+  bottom:10px;
+  z-index:2;
+  color:var(--white);
+  font-family:var(--font-en);
+  font-size:26px;
+  letter-spacing:.06em;
+}
+
+/* empathy */
+.split{
+  display:grid;
+  gap:34px;
+}
+.feeling-list{
+  display:grid;
+  gap:12px;
+  counter-reset:item;
+}
+.feeling{
+  position:relative;
+  padding:22px 20px 22px 76px;
+  border:1px solid var(--edge);
+  background:linear-gradient(135deg,rgba(247,247,242,.08),rgba(247,247,242,.03));
+  min-height:94px;
+}
+.feeling::before{
+  counter-increment:item;
+  content:counter(item,decimal-leading-zero);
+  position:absolute;
+  left:18px;
+  top:18px;
+  color:transparent;
+  -webkit-text-stroke:1px var(--neon);
+  font-family:var(--font-en);
+  font-size:44px;
+  line-height:1;
+}
+.feeling p{margin:0;color:rgba(247,247,242,.82);line-height:1.8;font-size:14px}
+.message-band{
+  margin-top:24px;
+  padding:22px;
+  border-left:4px solid var(--neon);
+  background:rgba(215,255,47,.08);
+  color:var(--white);
+  font-weight:900;
+  line-height:1.8;
+}
+
+/* gain cards */
+.gain-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:30px}
+.gain-card{
+  position:relative;
+  padding:28px 22px;
+  background:var(--dark-gray);
+  border:1px solid var(--edge);
+  overflow:hidden;
+}
+.gain-card::before{
+  content:attr(data-num);
+  position:absolute;
+  right:14px;
+  top:8px;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(247,247,242,.22);
+  font-family:var(--font-en);
+  font-size:76px;
+  line-height:.8;
+}
+.gain-card .label{color:var(--neon);font-family:var(--font-en);font-size:18px;letter-spacing:.08em}
+.gain-card h3{position:relative;margin:16px 0 10px;font-family:var(--font-impact);font-size:24px;line-height:1.35;letter-spacing:.01em}
+.gain-card p{position:relative;margin:0;color:var(--muted);line-height:1.85;font-size:14px}
+
+/* classes */
+.class-panels{display:grid;gap:14px;margin-top:32px}
+.class-panel{
+  position:relative;
+  min-height:280px;
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  background:var(--black);
+  border:1px solid rgba(247,247,242,.16);
+}
+.class-panel img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:saturate(.86) contrast(1.15) brightness(.72);
+  transform:scale(1.04);
+}
+.class-panel::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,rgba(11,11,13,.92),rgba(11,11,13,.18) 64%,rgba(11,11,13,.5));
+}
+.class-body{position:relative;z-index:2;padding:22px}
+.class-code{
+  display:inline-flex;
+  padding:6px 8px;
+  background:var(--neon);
+  color:var(--black);
+  font-family:var(--font-en);
+  font-size:20px;
+  line-height:1;
+  letter-spacing:.08em;
+  transform:rotate(-2deg);
+}
+.class-panel h3{margin:14px 0 8px;font-family:var(--font-en);font-size:44px;line-height:.9;letter-spacing:.02em}
+.class-panel p{margin:0;color:rgba(247,247,242,.84);line-height:1.75;font-weight:800}
+
+/* price */
+.price-box{
+  display:grid;
+  gap:12px;
+  margin-top:32px;
+}
+.price-card{
+  display:grid;
+  gap:6px;
+  padding:24px 20px;
+  background:#101012;
+  border:1px solid var(--edge);
+}
+.price-card.featured{
+  background:var(--neon);
+  color:var(--black);
+  border-color:var(--neon);
+}
+.price-card span{font-family:var(--font-en);font-size:18px;letter-spacing:.08em;color:var(--red)}
+.price-card.featured span{color:var(--black)}
+.price-card h3{margin:0;font-family:var(--font-impact);font-size:22px;line-height:1.25;letter-spacing:.01em}
+.price-card strong{font-family:var(--font-en);font-size:54px;line-height:.9;letter-spacing:.03em}
+.price-card small{color:var(--muted);font-weight:700}
+.price-card.featured small{color:rgba(11,11,13,.7)}
+.discounts{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.discounts b{display:inline-flex;padding:10px 12px;border:1px dashed rgba(247,247,242,.3);color:var(--white);font-size:13px}
+.price-actions{display:grid;gap:10px;margin-top:28px}
+
+/* flow */
+.flow{counter-reset:flow;display:grid;gap:16px;margin-top:34px}
+.flow-step{
+  counter-increment:flow;
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:16px;
+  padding:20px 0;
+  border-top:1px solid var(--edge);
+}
+.flow-step:last-child{border-bottom:1px solid var(--edge)}
+.flow-step::before{
+  content:counter(flow,decimal-leading-zero);
+  color:var(--neon);
+  font-family:var(--font-en);
+  font-size:48px;
+  line-height:.9;
+}
+.flow-step h3{margin:0 0 8px;font-family:var(--font-impact);font-size:22px;line-height:1.25;letter-spacing:.01em}
+.flow-step p{margin:0;color:var(--muted);line-height:1.8;font-size:14px}
+
+/* profile */
+.profile-card{
+  display:grid;
+  gap:0;
+  margin-top:32px;
+  background:var(--dark-gray);
+  border:1px solid var(--edge);
 }
 .profile-photo{
-  flex:0 0 auto;
-  width:100%;
-  aspect-ratio:4/3;
-}
-@media(min-width:640px){
-  .profile-photo{width:42%;aspect-ratio:auto;}
-}
-.profile-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
-.profile-body{padding:24px;}
-.profile-body .role{
-  display:inline-block;
-  background:var(--paper2);
-  color:var(--sub);
-  font-size:12px;
-  font-weight:700;
-  padding:5px 12px;
-  border-radius:50px;
-  margin-bottom:10px;
-}
-.profile-body h3{font-size:19px;font-weight:700;margin:0 0 10px;color:var(--ink);}
-.profile-body p{font-size:14px;line-height:1.9;color:var(--sub);}
-.profile-msg{
-  margin-top:14px;
-  padding:16px;
-  background:var(--paper2);
-  border-left:3px solid var(--pink);
-  border-radius:10px;
-  font-size:13.5px;
-  font-weight:600;
-  color:var(--ink);
-  line-height:1.8;
+  min-height:420px;
   position:relative;
-}
-
-/* ===== VOICE ===== */
-#voice{background:#fff;}
-.voice-scroll{
-  display:flex;
-  gap:16px;
-  overflow-x:auto;
-  padding:10px 4px 20px;
-  scroll-snap-type:x mandatory;
-}
-.voice-scroll::-webkit-scrollbar{display:none;}
-.voice-card{
-  flex:0 0 80%;
-  scroll-snap-align:center;
-  background:#fff;
-  border:1px solid #eee7d8;
-  border-radius:var(--radius);
-  padding:22px;
-  box-shadow:var(--shadow);
-}
-@media(min-width:640px){.voice-card{flex:0 0 46%;}}
-.voice-card .stars{color:var(--yellow);font-size:13px;margin-bottom:10px;letter-spacing:2px;}
-.voice-card p{font-size:13.5px;line-height:1.8;color:var(--ink);margin:0 0 14px;}
-.voice-card .who{font-size:12.5px;font-weight:700;color:var(--sub);}
-
-/* ===== LIFE world ===== */
-#life{
-  background:var(--ink);
-  color:#fff;
-  text-align:center;
-}
-#life .eyebrow{background:transparent;border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);}
-#life .sec-title{color:#fff;}
-#life .sec-title .accent{color:var(--yellow);}
-.life-photos{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  margin:30px 0;
-}
-.life-photos img{
-  border-radius:20px;
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  box-shadow:0 10px 24px rgba(0,0,0,.4);
-}
-.life-photos .tall{
-  grid-row:span 2;
-  height:340px;
-}
-.life-quote{
-  font-size:20px;
-  font-weight:900;
-  line-height:1.8;
-  margin:30px 0;
-}
-.life-quote .em{color:var(--yellow);}
-
-/* ===== FAQ ===== */
-#faq{background:#fff;}
-.faq-item{
-  border-radius:20px;
-  background:#fafafa;
-  margin-bottom:12px;
   overflow:hidden;
-  box-shadow:var(--shadow);
 }
+.profile-photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 28%;
+  filter:saturate(.9) contrast(1.08);
+}
+.profile-text{padding:30px 22px}
+.profile-text .role{color:var(--neon);font-family:var(--font-en);font-size:22px;letter-spacing:.08em}
+.profile-text h3{margin:14px 0 18px;font-family:var(--font-impact);font-size:clamp(28px,7vw,52px);line-height:1.18;letter-spacing:.01em}
+.profile-text p{color:rgba(247,247,242,.82);line-height:1.95;margin:0 0 16px}
+.profile-points{display:grid;gap:8px;margin-top:18px}
+.profile-points span{display:block;border:1px solid var(--edge);padding:10px 12px;color:var(--muted);font-size:13px;font-weight:800}
+
+/* voice */
+.voice-grid{display:grid;gap:12px;margin-top:30px}
+.voice-card{
+  padding:22px;
+  background:rgba(247,247,242,.06);
+  border:1px solid var(--edge);
+}
+.voice-card b{display:block;color:var(--neon);font-family:var(--font-en);font-size:22px;letter-spacing:.08em;margin-bottom:10px}
+.voice-card p{margin:0 0 14px;line-height:1.85;color:rgba(247,247,242,.84);font-size:14px}
+.voice-card small{color:var(--muted);font-weight:800}
+
+/* life */
+.life{
+  min-height:72svh;
+  display:flex;
+  align-items:center;
+  background:
+    linear-gradient(90deg,rgba(11,11,13,.96),rgba(11,11,13,.65)),
+    url("assets/stage-photo-1.jpg") center/cover;
+}
+.life .section-title{font-family:var(--font-en);font-size:clamp(68px,18vw,170px);line-height:.8}
+.life-copy{max-width:640px;color:rgba(247,247,242,.82);line-height:2}
+
+/* faq/final */
+.faq-list{margin-top:30px;display:grid;gap:10px}
+.faq-item{border:1px solid rgba(11,11,13,.16);background:#fff}
 .faq-q{
-  padding:18px 20px;
-  font-weight:800;
-  font-size:14.5px;
+  width:100%;
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  gap:16px;
+  padding:18px 16px;
+  border:0;
+  background:transparent;
+  color:var(--black);
+  text-align:left;
+  font-weight:900;
   cursor:pointer;
 }
-.faq-q .q-mark{
-  color:var(--pink);
-  margin-right:8px;
+.faq-q span:first-child{display:flex;gap:10px}
+.faq-q b{font-family:var(--font-en);color:var(--red);font-size:22px;line-height:1}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a p{margin:0;padding:0 16px 18px 48px;color:#555;line-height:1.8;font-size:14px}
+.final{
+  padding:92px 0 132px;
+  background:
+    radial-gradient(circle at 70% 18%,rgba(215,255,47,.14),transparent 26rem),
+    var(--black);
+  text-align:left;
 }
-.faq-q .arrow{
-  transition:transform .3s ease;
-  font-size:14px;
-}
-.faq-item.open .arrow{transform:rotate(180deg);}
-.faq-a{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .35s ease;
-  padding:0 20px;
-}
-.faq-a p{
-  font-size:13.5px;
-  line-height:1.8;
-  color:#555;
-  margin:0 0 18px;
-}
-
-/* ===== FINAL CTA ===== */
-#final{
-  background:var(--ink);
-  color:#fff;
-  text-align:center;
-}
-#final .sec-title{color:#fff;font-size:28px;}
-#final .sec-lead{color:rgba(255,255,255,.75);}
-#final .eyebrow{background:transparent;border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);}
-.final-card{
-  background:rgba(255,255,255,.06);
-  border-radius:var(--radius);
+.final-box{
+  border:1px solid var(--edge);
+  background:rgba(247,247,242,.05);
   padding:30px 22px;
-  border:1px solid rgba(255,255,255,.15);
 }
-@media(min-width:640px){
-  #final .sec-title{font-size:34px;}
-}
-.final-ctas{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-  margin-top:24px;
-  align-items:center;
-}
-.final-ctas .btn-primary{
-  background:var(--pink);
-  color:#fff;
-}
-.final-ctas .btn-line{
-  background:#06C755;
-}
-footer{
-  background:var(--ink);
-  color:rgba(255,255,255,.6);
+.final .section-title{font-size:clamp(36px,10vw,86px)}
+.footer{
+  padding:30px 20px 118px;
+  background:#050506;
+  color:rgba(247,247,242,.55);
   text-align:center;
-  padding:40px 20px 120px;
   font-size:12px;
 }
-footer .logo{
-  color:#fff;
-  font-weight:900;
-  font-size:18px;
-  margin-bottom:10px;
-}
+.footer img{width:72px;margin:0 auto 12px;filter:grayscale(1) contrast(1.2)}
 
-/* utility */
-.center{text-align:center;}
-.mt0{margin-top:0;}
+@media(min-width:720px){
+  .hero-actions,.price-actions{grid-template-columns:1fr 1fr;display:grid;max-width:620px}
+  .split{grid-template-columns:.9fr 1.1fr;align-items:start}
+  .gain-grid,.price-box,.voice-grid{grid-template-columns:repeat(2,1fr)}
+  .class-panels{grid-template-columns:repeat(2,1fr)}
+  .profile-card{grid-template-columns:.78fr 1fr}
+  .profile-text{padding:46px}
+  .bottom-cta{left:50%;right:auto;transform:translateX(-50%);width:min(760px,calc(100% - 24px));border:1px solid rgba(247,247,242,.14);bottom:12px}
+  .hero-shot{
+    position:absolute;
+    right:8vw;
+    bottom:118px;
+    width:min(34vw,430px);
+    height:42vh;
+    min-height:320px;
+    margin:0;
+    z-index:3;
+    opacity:.9;
+  }
+  .hero-shot span{font-size:34px}
+}
+@media(min-width:1040px){
+  .section{padding:112px 0}
+  .photo-tile{width:310px;height:204px}
+  .photo-tile.tall{width:230px;height:300px}
+  .photo-tile.wide{width:410px;height:230px}
+}
+@media(max-width:520px){
+  .wrap{width:calc(100% - 32px)}
+  .section{padding:76px 0}
+  .hero{padding:92px 0 78px}
+  .hero-media img{
+    height:116%;
+    margin-top:-12%;
+    object-position:center center;
+  }
+  .hero-media::after{
+    background:
+      linear-gradient(90deg,rgba(11,11,13,.78),rgba(11,11,13,.18)),
+      linear-gradient(0deg,rgba(11,11,13,1) 0%,rgba(11,11,13,.78) 45%,rgba(11,11,13,.18) 100%);
+  }
+  .hero-title{font-size:clamp(38px,10.6vw,48px)}
+  .section-title{font-size:clamp(28px,9vw,42px)}
+  .hero-copy{font-size:14.5px}
+  .hero-actions .btn-line{display:none}
+  .tag-row li{font-size:11px}
+  .photo-head .section-title{font-size:58px}
+  .line-fab{top:14px;right:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
-
-<!-- ===================== LOADER ===================== -->
-<div id="loader">
-  <div class="logo-load" id="loadLogo">
-    <span>新</span><span>生</span><span>L</span><span>U</span><span>C</span><span>K</span><span>Y</span><span>★</span><span>J</span><span>A</span><span>M</span>
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="loader-logo">LUCKY<br>JAM</div>
+    <div class="loader-bar"><span></span></div>
   </div>
-  <div class="load-icons" id="loadIcons">
-    <span>♪</span><span>★</span><span>●</span><span>♬</span><span>●</span>
-  </div>
-  <div class="load-bar-wrap"><div class="load-bar" id="loadBar"></div></div>
 </div>
 
-<!-- fixed top LINE -->
-<a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="line-fab top">公式LINE</a>
+<a class="line-fab" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">公式LINE</a>
 
-<div class="wrap">
-
-<!-- ===================== HERO ===================== -->
-<section id="hero">
-  <div class="hero-bgtype" aria-hidden="true">DANCE</div>
-
-  <div class="hero-copy">
-    <span class="hero-label" data-fade-up>筑紫野・太宰府 HIPHOP DANCE TEAM</span>
-    <h1 data-hero-title>
-      <span class="line1">音が鳴ったら、</span>
-      <span class="line1 accent">私の時間が動き出す。</span>
-    </h1>
-    <p class="hero-sub" data-fade-up>
-      子どもも、大人も。<br>
-      うまく踊るより、まず<b>楽しむ</b>。<br>
-      筑紫野・太宰府エリアのHIPHOPダンスチーム。
-    </p>
-
-    <div class="hero-ctas" data-fade-up>
-      <a href="#price" class="btn btn-primary" data-bounce>体験レッスンを予約する（1,000円）</a>
-      <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-line" data-bounce>公式LINEで相談する</a>
+<main class="page">
+  <section class="hero" id="hero">
+    <div class="hero-media" data-zoom>
+      <img src="assets/group-photo.jpg" alt="新生LUCKY★JAM DANCEのステージ後の集合写真">
     </div>
-  </div>
-
-  <div class="hero-photo-card" data-rotate-in>
-    <img src="assets/group-photo.jpg" alt="新生LUCKY★JAM DANCEのメンバー集合写真" loading="lazy">
-    <div class="hero-photo-caption">
-      <span>新生LUCKY★JAM DANCE</span>
-      <span>筑紫野・太宰府</span>
-    </div>
-  </div>
-
-  <div class="hero-tags">
-    <span>初心者OK</span>
-    <span>30〜60代女性が活躍中</span>
-    <span>親子参加OK</span>
-  </div>
-</section>
-
-<!-- marquee -->
-<div class="marquee" aria-hidden="true">
-  <div class="track" id="marqueeTrack">HIPHOP DANCE ★ 新生LUCKY JAM ★ TSUKUSHINO ★ DAZAIFU ★ DANCE IS LIFE ★ HIPHOP DANCE ★ 新生LUCKY JAM ★ TSUKUSHINO ★ DAZAIFU ★ DANCE IS LIFE ★ </div>
-</div>
-
-<!-- ===================== EMPATHY ===================== -->
-<section id="empathy">
-  <span class="eyebrow" data-pop>こんな気持ち、ありませんか？</span>
-  <h2 class="sec-title" data-pop>
-    子どもが少し手を離れた今、<br>次は<span class="accent">“私の時間”</span>を楽しんでいい。
-  </h2>
-
-  <div class="empathy-card" data-fade-up>
-    <div class="emoji">🌀</div>
-    <p>子育てや仕事が落ち着いてきたのに、<br>新しく何かを始める勇気が出ない。</p>
-  </div>
-  <div class="empathy-card" data-fade-up>
-    <div class="emoji">💃</div>
-    <p>ダンスは好きだったけど、<br>「今の年齢からなんて遅いかな」と思ってしまう。</p>
-  </div>
-  <div class="empathy-card" data-fade-up>
-    <div class="emoji">🫶</div>
-    <p>一人で続けるのは不安。<br>でも、誰かと一緒なら踏み出せそうな気がする。</p>
-  </div>
-
-  <p class="empathy-quote" data-pop>
-    <span class="hi">大丈夫。</span>その気持ちのまま、<br>音楽の鳴る部屋に来てください。
-  </p>
-</section>
-
-<!-- ===================== GET ===================== -->
-<section id="get">
-  <span class="eyebrow" data-pop>新生LUCKY★JAM DANCEで得られること</span>
-  <h2 class="sec-title" data-pop>ダンスは、<br><span class="accent">体より先に心が動く。</span></h2>
-
-  <div class="get-grid">
-    <div class="get-card c1" data-fade-up>
-      <span class="num">01</span>
-      <div class="ic">🎶</div>
-      <h3>自分の時間が増える</h3>
-      <p>週に1回、自分のためだけの時間。音楽が鳴れば、肩書きも年齢も関係なくなります。</p>
-    </div>
-    <div class="get-card c2" data-fade-up>
-      <span class="num">02</span>
-      <div class="ic">👯</div>
-      <h3>世代を超えた仲間ができる</h3>
-      <p>子どもから大人まで一緒に踊るから、家族のような温かいチーム感が生まれます。</p>
-    </div>
-    <div class="get-card c3" data-fade-up>
-      <span class="num">03</span>
-      <div class="ic">✨</div>
-      <h3>「やってみた」自信が増える</h3>
-      <p>上手さよりも挑戦したこと自体を褒め合う空気。小さな一歩が自信になります。</p>
-    </div>
-    <div class="get-card c4" data-fade-up>
-      <span class="num">04</span>
-      <div class="ic">🔥</div>
-      <h3>体も心も自然と元気に</h3>
-      <p>気づけば汗をかいて笑っている。運動不足やストレスも音楽と一緒に飛んでいきます。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CLASS ===================== -->
-<section id="classes">
-  <span class="eyebrow" data-pop>クラス紹介</span>
-  <h2 class="sec-title" data-pop>あなたに合う<br><span class="accent">クラスがきっとある。</span></h2>
-  <p class="sec-lead" data-fade-up>年齢や経験に合わせて、無理なく始められるクラスを用意しています。気になるクラスがあれば、体験から気軽にどうぞ。</p>
-
-  <div class="class-scroll">
-    <div class="class-card kids" data-rotate-in>
-      <div class="head">
-        <span class="tag">KIDS</span>
-        <h3>キッズクラス</h3>
-        <div class="meta">対象：小学生〜中学生</div>
-      </div>
-      <p>初めての子も大歓迎。リズム遊びから少しずつ振り付けに挑戦し、発表会やイベント出演も経験できます。</p>
-    </div>
-    <div class="class-card teen" data-rotate-in>
-      <div class="head">
-        <span class="tag">TEEN</span>
-        <h3>ティーンズクラス</h3>
-        <div class="meta">対象：中学生〜高校生</div>
-      </div>
-      <p>個性を伸ばすクラス。少し難易度の高い振り付けにも挑戦しながら、自分らしい表現を見つけていきます。</p>
-    </div>
-    <div class="class-card adult" data-rotate-in>
-      <div class="head">
-        <span class="tag">ADULT</span>
-        <h3>大人クラス</h3>
-        <div class="meta">対象：30〜60代　経験不問</div>
-      </div>
-      <p>「もう一度踊ってみたい」「初めてだけど挑戦したい」を歓迎するクラス。完璧さより楽しむ気持ちを大切にします。</p>
-    </div>
-    <div class="class-card family" data-rotate-in>
-      <div class="head">
-        <span class="tag">FAMILY</span>
-        <h3>親子・兄弟クラス</h3>
-        <div class="meta">割引あり：親子割／兄弟割 各-1,000円</div>
-      </div>
-      <p>親子や兄弟で一緒に通えるのも魅力のひとつ。家族の新しい共通の楽しみとしても人気です。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PRICE ===================== -->
-<section id="price">
-  <span class="eyebrow" data-pop>料金・体験予約</span>
-  <h2 class="sec-title" data-pop>まずは<br><span class="accent">1,000円の体験</span>から。</h2>
-  <p class="sec-lead" data-fade-up>レッスンの空気を感じてみてください。続けるかどうかは、体験してから決めてOKです。</p>
-
-  <div class="price-grid">
-    <div class="price-card highlight" data-fade-up>
-      <span class="badge">はじめての方へ</span>
-      <h4>体験レッスン</h4>
-      <p class="amount">1,000<span>円（税込）</span></p>
-      <p class="note">初回限定・1レッスン分</p>
-    </div>
-    <div class="price-card" data-fade-up>
-      <h4>月4回コース</h4>
-      <p class="amount">6,000<span>円（税込）/月</span></p>
-      <p class="note">週1回ペースでしっかり通いたい方に</p>
-    </div>
-    <div class="price-card" data-fade-up>
-      <h4>ビジター利用</h4>
-      <p class="amount">3,000<span>円 / 60分</span></p>
-      <p class="note">都度参加・お試し利用にも</p>
-    </div>
-    <div class="price-card" data-fade-up>
-      <h4>割引制度</h4>
-      <p class="amount" style="font-size:18px;">親子・兄弟で<br>もっとお得に</p>
-      <p class="note">下記の割引をご確認ください</p>
-    </div>
-  </div>
-
-  <div class="discount-row" data-fade-up>
-    <div class="discount-chip">
-      <div class="d-amount">-1,000円</div>
-      <div class="d-label">親子割</div>
-    </div>
-    <div class="discount-chip">
-      <div class="d-amount">-1,000円</div>
-      <div class="d-label">兄弟割</div>
-    </div>
-  </div>
-
-  <div class="price-cta" data-fade-up>
-    <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-primary" data-bounce>体験レッスンを予約する</a>
-    <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-line" data-bounce>公式LINEで相談する</a>
-  </div>
-  <p class="price-foot">予約・お問い合わせはすべて公式LINEから、やさしくご案内します。</p>
-</section>
-
-<!-- ===================== FLOW ===================== -->
-<section id="flow">
-  <span class="eyebrow" data-pop>レッスンの流れ</span>
-  <h2 class="sec-title" data-pop>当日は<br><span class="accent">手ぶらの気持ちで。</span></h2>
-
-  <div class="flow-list">
-    <div class="flow-step" data-fade-up>
-      <div class="step-num">1</div>
-      <h4>公式LINEで予約</h4>
-      <p>体験したい日時を、公式LINEから送るだけ。スタッフが丁寧に返信します。</p>
-    </div>
-    <div class="flow-step" data-fade-up>
-      <div class="step-num">2</div>
-      <h4>動きやすい服でスタジオへ</h4>
-      <p>道具は不要です。タオルとお水だけ持って、リラックスして来てください。</p>
-    </div>
-    <div class="flow-step" data-fade-up>
-      <div class="step-num">3</div>
-      <h4>ウォームアップ＆かんたんな振り</h4>
-      <p>音楽に合わせて体をほぐしながら、簡単なステップから一緒に練習します。</p>
-    </div>
-    <div class="flow-step" data-fade-up>
-      <div class="step-num">4</div>
-      <h4>音楽に乗せて踊ってみる</h4>
-      <p>最後はみんなで通して踊ります。できなくても大丈夫、その場の空気を楽しんで。</p>
-    </div>
-    <div class="flow-step" data-fade-up>
-      <div class="step-num">5</div>
-      <h4>続けるかどうかはゆっくり決めて</h4>
-      <p>体験後、無理な勧誘はしません。気持ちが向いたタイミングでご連絡ください。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PROFILE ===================== -->
-<section id="profile">
-  <span class="eyebrow" data-pop>講師プロフィール</span>
-  <h2 class="sec-title" data-pop>“先生”じゃなくて、<br><span class="accent">一緒に盛り上がる仲間。</span></h2>
-
-  <div class="profile-card" data-fade-up>
-    <div class="profile-photo">
-      <img src="assets/teacher-photo.jpg" alt="新生LUCKY★JAM DANCEチームリーダーの写真" loading="lazy">
-    </div>
-    <div class="profile-body">
-      <span class="role">チームリーダー</span>
-      <h3>新生LUCKY★JAM DANCE 主宰</h3>
-      <p>
-        筑紫野・太宰府エリアを中心に、子どもから大人まで一緒に楽しめる場をつくりたくて、このチームを始めました。<br><br>
-        踊りが上手いことより、「今日も来てよかった」と思える時間をつくることを大事にしています。
+    <div class="hero-outline" data-bg-word>LUCKY JAM / HIPHOP / BEAT</div>
+    <div class="hero-content">
+      <div class="hero-kicker" data-hero>TSUKUSHINO / DAZAIFU HIPHOP TEAM</div>
+      <h1 class="hero-title" data-hero>
+        音にふれるたび、<br>
+        <span class="red">わたしが少し軽くなる。</span>
+      </h1>
+      <p class="hero-copy" data-hero>
+        筑紫野・太宰府エリアのHIPHOPダンスチーム。子どもも、大人も、親子も、それぞれのペースで楽しめる場所です。上手に踊ることよりも、音に乗る心地よさと、仲間と笑える時間を大切にしています。
       </p>
-      <div class="profile-msg">
-        “上手く踊れなくても、笑っていればそれで100点。<br>
-        みんなで音楽に乗っかる、そのチームのテンションが好きです。”
+      <div class="hero-shot" data-hero>
+        <img src="assets/group-photo.jpg" alt="新生LUCKY★JAM DANCEのチーム集合写真">
+        <span>TEAM ENERGY</span>
+      </div>
+      <ul class="tag-row" data-hero>
+        <li>初心者OK</li>
+        <li>KIDS・TEENS・ADULT</li>
+        <li>親子参加OK</li>
+        <li>イベント出演あり</li>
+      </ul>
+      <div class="hero-actions" data-hero>
+        <a class="btn btn-primary" href="#price">体験レッスンを予約する</a>
+        <a class="btn btn-line" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">公式LINEで相談する</a>
       </div>
     </div>
-  </div>
-</section>
+    <div class="hero-scroll">SCROLL / MOVE</div>
+  </section>
 
-<!-- ===================== VOICE ===================== -->
-<section id="voice">
-  <span class="eyebrow" data-pop>参加者の声</span>
-  <h2 class="sec-title" data-pop>始めてみたら、<br><span class="accent">こんな変化がありました。</span></h2>
-
-  <div class="voice-scroll">
-    <div class="voice-card" data-fade-up>
-      <div class="stars">★★★★★</div>
-      <p>「子どもが小学校を卒業して時間ができたタイミングで参加。最初は緊張しましたが、すぐに馴染めて、毎週が楽しみになりました。」</p>
-      <div class="who">40代・女性</div>
+  <section class="section dark" id="price">
+    <div class="wrap split">
+      <div>
+        <span class="section-kicker" data-reveal>Trial</span>
+        <h2 class="section-title" data-reveal>まずは一度、音に乗る楽しさを<br>感じてみませんか。</h2>
+        <p class="section-lead" data-reveal>体験レッスンは1,000円。初心者の方も、親子での参加も大丈夫です。持ち物や参加できる日程は、公式LINEから気軽に確認できます。</p>
+        <div class="price-actions" data-reveal>
+          <a class="btn btn-primary" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">まずは1,000円で体験する</a>
+          <a class="btn btn-ghost" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">公式LINEで相談する</a>
+        </div>
+      </div>
+      <div>
+        <div class="price-box">
+          <div class="price-card featured" data-card><span>TRIAL</span><h3>体験レッスン</h3><strong>1,000</strong><small>円（税込）</small></div>
+          <div class="price-card" data-card><span>BEGINNER</span><h3>初心者OK</h3><strong>OK</strong><small>はじめての方も歓迎</small></div>
+          <div class="price-card" data-card><span>FAMILY</span><h3>親子OK</h3><strong>OK</strong><small>親子割・兄弟割あり</small></div>
+          <div class="price-card" data-card><span>LINE</span><h3>持ち物案内</h3><strong>DM</strong><small>LINEで予約・相談</small></div>
+        </div>
+        <div class="discounts" data-reveal><b>月4回 6,000円（税込）</b><b>ビジター 3,000円 / 60分</b><b>親子割・兄弟割 -1,000円</b></div>
+      </div>
     </div>
-    <div class="voice-card" data-fade-up>
-      <div class="stars">★★★★★</div>
-      <p>「運動経験ゼロでしたが、先生がとにかく明るくて、できなくても笑って終われる。気づいたら体力もついていました。」</p>
-      <div class="who">50代・女性</div>
+  </section>
+
+  <section class="section charcoal" id="empathy">
+    <div class="outline-word">START</div>
+    <div class="wrap split">
+      <div>
+        <span class="section-kicker" data-reveal>Empathy</span>
+        <h2 class="section-title" data-reveal>子どもが少し手を離れた頃、<br>わたしの時間も少しずつ。</h2>
+        <p class="section-lead" data-reveal>新生LUCKY★JAM DANCEは、初心者も大人からの挑戦も、チームで受け止めるHIPHOPの場所です。かっこよさはある。でも、怖くない。</p>
+      </div>
+      <div>
+        <div class="feeling-list">
+          <div class="feeling" data-card><p>子育てや仕事が少し落ち着いて、自分のために動く時間がほしくなってきた。</p></div>
+          <div class="feeling" data-card><p>ダンスに興味はある。でも今から入って浮かないか、ついていけるかが気になる。</p></div>
+          <div class="feeling" data-card><p>一人では続かないかもしれない。けれど、仲間となら一歩踏み出せそうな気がする。</p></div>
+        </div>
+        <div class="message-band" data-reveal>最初からうまくなくていい。音を聞いて、体を動かして、少しずつ自分のペースを見つけていく。</div>
+      </div>
     </div>
-    <div class="voice-card" data-fade-up>
-      <div class="stars">★★★★★</div>
-      <p>「娘と一緒に通っています。親子で同じことに挑戦する時間が、思っていたよりずっと特別でした。」</p>
-      <div class="who">親子参加・30代女性</div>
+  </section>
+
+  <section class="section charcoal" id="flow">
+    <div class="wrap">
+      <span class="section-kicker" data-reveal>Flow</span>
+      <h2 class="section-title" data-reveal>はじめての日も、<br>安心して来られるように。</h2>
+      <div class="flow">
+        <article class="flow-step" data-reveal><div><h3>公式LINEで予約</h3><p>体験したい日時をLINEで送信。参加できるクラスを確認します。</p></div></article>
+        <article class="flow-step" data-reveal><div><h3>動きやすい服で参加</h3><p>必要なのは、室内シューズ、タオル、水分。特別な道具は不要です。</p></div></article>
+        <article class="flow-step" data-reveal><div><h3>音を聞いて体をならす</h3><p>ウォームアップから入り、リズムの取り方を少しずつ体に入れていきます。</p></div></article>
+        <article class="flow-step" data-reveal><div><h3>振り付けに挑戦</h3><p>できるところからでOK。音に乗る、仲間と合わせる、見せる感覚を体験します。</p></div></article>
+        <article class="flow-step" data-reveal><div><h3>続け方を相談</h3><p>体験後、クラスや料金を確認。無理なく続けられるペースを選べます。</p></div></article>
+      </div>
     </div>
-    <div class="voice-card" data-fade-up>
-      <div class="stars">★★★★★</div>
-      <p>「年齢を気にして踊るのを諦めていましたが、ここなら大丈夫でした。仲間ができたのが一番嬉しいです。」</p>
-      <div class="who">60代・女性</div>
+  </section>
+
+  <section class="photo-rush" id="this-is">
+    <div class="photo-head wrap">
+      <span class="section-kicker">Photo</span>
+      <h2 class="section-title">楽しい空気は、<br>写真からも伝わる。</h2>
+      <p class="section-lead">練習も、ステージも、仲間も。頑張りすぎなくても、音が鳴れば自然と表情が変わっていく。</p>
     </div>
-  </div>
-</section>
-
-<!-- ===================== LIFE ===================== -->
-<section id="life">
-  <span class="eyebrow" data-pop>DANCE is LIFE</span>
-  <h2 class="sec-title" data-pop>踊ることは、<br><span class="accent">生きることそのもの。</span></h2>
-
-  <div class="life-photos">
-    <img class="tall" src="assets/stage-photo-1.jpg" alt="ステージで踊るメンバーの写真" loading="lazy" data-rotate-in>
-    <img src="assets/event-photo-1.jpg" alt="イベントで写真撮影をするメンバー" loading="lazy" data-rotate-in>
-    <img src="assets/event-photo-2.jpg" alt="展示会で記念撮影をするメンバー" loading="lazy" data-rotate-in>
-  </div>
-
-  <p class="life-quote" data-pop>
-    完璧な振りより、<span class="em">心からの一歩</span>を。<br>
-    音楽が鳴れば、誰だって主人公になれる。
-  </p>
-</section>
-
-<!-- ===================== FAQ ===================== -->
-<section id="faq">
-  <span class="eyebrow" data-pop>よくある質問</span>
-  <h2 class="sec-title" data-pop>はじめる前の<br><span class="accent">小さな不安に答えます。</span></h2>
-
-  <div class="faq-item">
-    <div class="faq-q"><span><span class="q-mark">Q.</span>ダンス未経験でも大丈夫ですか？</span><span class="arrow">▼</span></div>
-    <div class="faq-a"><p>もちろんです。メンバーの多くが未経験からスタートしています。簡単な動きから始めるので安心してください。</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q"><span><span class="q-mark">Q.</span>年齢的に浮きませんか？</span><span class="arrow">▼</span></div>
-    <div class="faq-a"><p>30〜60代の女性メンバーも多く活躍しています。子どもクラスとは別に大人クラスもあるのでご安心ください。</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q"><span><span class="q-mark">Q.</span>体験レッスンの持ち物は？</span><span class="arrow">▼</span></div>
-    <div class="faq-a"><p>動きやすい服装と運動シューズ、タオル・お水があれば十分です。特別な道具は不要です。</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q"><span><span class="q-mark">Q.</span>体験後に必ず入会しないといけませんか？</span><span class="arrow">▼</span></div>
-    <div class="faq-a"><p>いいえ、無理な勧誘はしません。体験して感じたことを大切に、ゆっくり決めてください。</p></div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q"><span><span class="q-mark">Q.</span>子どもと一緒に参加できますか？</span><span class="arrow">▼</span></div>
-    <div class="faq-a"><p>はい。親子クラスや兄弟割もご用意していますので、ぜひ公式LINEでご相談ください。</p></div>
-  </div>
-</section>
-
-<!-- ===================== FINAL CTA ===================== -->
-<section id="final">
-  <div class="final-card">
-    <span class="eyebrow">最後にひとつだけ</span>
-    <h2 class="sec-title" data-pop>うまく踊れるかより、<br>楽しかったかどうか。</h2>
-    <p class="sec-lead" data-fade-up>音が鳴ったら、私の時間が動き出す。<br>その一歩を、新生LUCKY★JAM DANCEで。</p>
-
-    <div class="final-ctas" data-fade-up>
-      <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" id="line" class="btn btn-primary" data-bounce>体験レッスンを予約する（1,000円）</a>
-      <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn btn-line" data-bounce>公式LINEで相談する</a>
+    <div class="rush-row rush-left" aria-hidden="true">
+      <figure class="photo-tile wide"><img src="assets/stage-photo-1.jpg" alt=""><b>STAGE</b></figure>
+      <figure class="photo-tile"><img src="assets/group-photo.jpg" alt=""><b>TEAM</b></figure>
+      <figure class="photo-tile tall"><img src="assets/event-photo-2.jpg" alt=""><b>BEAT</b></figure>
+      <figure class="photo-tile wide"><img src="assets/event-photo-1.jpg" alt=""><b>KIDS</b></figure>
+      <figure class="photo-tile"><img src="assets/teacher-photo.jpg" alt=""><b>LEADER</b></figure>
+      <figure class="photo-tile wide"><img src="assets/stage-photo-1.jpg" alt=""><b>FAMILY</b></figure>
+      <figure class="photo-tile"><img src="assets/group-photo.jpg" alt=""><b>EVENT</b></figure>
+      <figure class="photo-tile tall"><img src="assets/event-photo-2.jpg" alt=""><b>MOVE</b></figure>
     </div>
-  </div>
-</section>
+    <div class="rush-row rush-right" aria-hidden="true">
+      <figure class="photo-tile tall"><img src="assets/event-photo-2.jpg" alt=""><b>ADULT</b></figure>
+      <figure class="photo-tile wide"><img src="assets/group-photo.jpg" alt=""><b>TEAM</b></figure>
+      <figure class="photo-tile"><img src="assets/stage-photo-1.jpg" alt=""><b>LESSON</b></figure>
+      <figure class="photo-tile wide"><img src="assets/event-photo-1.jpg" alt=""><b>STAGE</b></figure>
+      <figure class="photo-tile"><img src="assets/teacher-photo.jpg" alt=""><b>STYLE</b></figure>
+      <figure class="photo-tile wide"><img src="assets/group-photo.jpg" alt=""><b>LUCKY</b></figure>
+      <figure class="photo-tile tall"><img src="assets/event-photo-2.jpg" alt=""><b>JAM</b></figure>
+      <figure class="photo-tile"><img src="assets/stage-photo-1.jpg" alt=""><b>BEAT</b></figure>
+    </div>
+  </section>
 
-<footer>
-  <img src="assets/logo.jpg" alt="新生LUCKY★JAM DANCEロゴ" style="width:90px;margin:0 auto 14px;border-radius:12px;">
-  <div class="logo">新生LUCKY★JAM DANCE</div>
-  <p>筑紫野市・太宰府エリア　HIPHOPダンスチーム</p>
-  <p>&copy; 新生LUCKY★JAM DANCE</p>
-</footer>
+  <section class="section dark" id="get">
+    <div class="wrap">
+      <span class="section-kicker" data-reveal>What You Get</span>
+      <h2 class="section-title" data-reveal>ダンスが、毎日の表情を<br>少し変えてくれる。</h2>
+      <div class="gain-grid">
+        <article class="gain-card" data-card data-num="01"><span class="label">MOVE</span><h3>自分の時間が戻ってくる</h3><p>週に1回、音に集中する時間。家でも職場でもない場所で、自分のスイッチを入れ直せます。</p></article>
+        <article class="gain-card" data-card data-num="02"><span class="label">TEAM</span><h3>世代を超えた仲間ができる</h3><p>子ども、大人、親子が同じビートに乗る。違う世代が混ざるから、チームの熱量が生まれます。</p></article>
+        <article class="gain-card" data-card data-num="03"><span class="label">STAGE</span><h3>ステージに立つ高揚感</h3><p>イベント出演は、ただの発表ではなく挑戦の場。照明の下で踊る経験が、自信に変わります。</p></article>
+        <article class="gain-card" data-card data-num="04"><span class="label">STYLE</span><h3>かっこよくなれる実感</h3><p>完璧さより、表現する楽しさを大切に。音の取り方、見せ方、姿勢から変わっていきます。</p></article>
+      </div>
+    </div>
+  </section>
 
-</div><!-- /wrap -->
+  <section class="section charcoal" id="classes">
+    <div class="wrap">
+      <span class="section-kicker" data-reveal>Classes</span>
+      <h2 class="section-title" data-reveal>子どもも、大人も、親子も。<br>それぞれのペースで楽しめる。</h2>
+      <p class="section-lead" data-reveal>キッズも、ティーンズも、大人も、親子も。年齢や経験に合わせて、無理なく始められるクラスを用意しています。</p>
+      <div class="class-panels">
+        <article class="class-panel" data-image-card><img src="assets/event-photo-1.jpg" alt="キッズクラスの集合写真"><div class="class-body"><span class="class-code">KIDS</span><h3>KIDS</h3><p>はじめてのリズムを、遊びながら身体へ。</p></div></article>
+        <article class="class-panel" data-image-card><img src="assets/group-photo.jpg" alt="ティーンズクラスの雰囲気"><div class="class-body"><span class="class-code">TEENS</span><h3>TEENS</h3><p>音に乗る。個性を出す。ステージで魅せる。</p></div></article>
+        <article class="class-panel" data-image-card><img src="assets/stage-photo-1.jpg" alt="大人クラスのレッスン風景"><div class="class-body"><span class="class-code">ADULT</span><h3>ADULT</h3><p>年齢じゃない。今からでも、かっこよく踊れる。</p></div></article>
+        <article class="class-panel" data-image-card><img src="assets/event-photo-2.jpg" alt="親子参加のイメージ"><div class="class-body"><span class="class-code">FAMILY</span><h3>FAMILY</h3><p>親子で同じ音に乗る時間。</p></div></article>
+      </div>
+    </div>
+  </section>
 
-<!-- bottom fixed CTA -->
+  <section class="section dark" id="profile">
+    <div class="wrap">
+      <span class="section-kicker" data-reveal>Leader</span>
+      <h2 class="section-title" data-reveal>一緒に踊り、<br>一緒に楽しむチームリーダー。</h2>
+      <div class="profile-card" data-card>
+        <div class="profile-photo"><img src="assets/teacher-photo.jpg" alt="新生LUCKY★JAM DANCE チームリーダー"></div>
+        <div class="profile-text">
+          <span class="role">TEAM LEADER</span>
+          <h3>一緒に踊り、一緒にステージへ向かう存在。</h3>
+          <p>初心者にもわかりやすく、音の取り方、体の使い方、見せ方をひとつずつ伝えます。大人からの挑戦も、親子での参加も歓迎。うまさだけではなく、表現する楽しさとチームとしての一体感を大切にしています。</p>
+          <p>ステージに立つ緊張も、踊り切ったあとの高揚感も、仲間と分け合える。それが新生LUCKY★JAM DANCEの強さです。</p>
+          <!-- 実績・出演歴は情報提供後にここへ追記できます。例：イベント出演歴、コンテスト参加歴、指導歴など。 -->
+          <div class="profile-points"><span>BEGINNER FRIENDLY</span><span>STAGE MIND</span><span>TEAM BUILDING</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section charcoal" id="voice">
+    <div class="wrap">
+      <span class="section-kicker" data-reveal>Voices</span>
+      <h2 class="section-title" data-reveal>「できた」より先に、<br>「楽しかった」がある。</h2>
+      <div class="voice-grid">
+        <article class="voice-card" data-card><b>40s / ADULT</b><p>子どもが少し手を離れて、自分の時間として参加。最初は緊張しましたが、音が鳴ると自然に体が動きました。</p><small>40代・女性</small></article>
+        <article class="voice-card" data-card><b>50s / BEGINNER</b><p>運動経験ゼロでも大丈夫でした。できないところもチームで笑いながら練習できるので、続けやすいです。</p><small>50代・女性</small></article>
+        <article class="voice-card" data-card><b>FAMILY</b><p>娘と同じ曲で踊る時間が新鮮です。親子で同じステージに向かう感覚が、思っていた以上に楽しいです。</p><small>親子参加・30代女性</small></article>
+        <article class="voice-card" data-card><b>60s / MOVE</b><p>年齢を理由にあきらめていたけれど、ここなら挑戦できました。仲間がいるから、次も行きたくなります。</p><small>60代・女性</small></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section paper" id="faq">
+    <div class="wrap">
+      <span class="section-kicker" data-reveal>FAQ</span>
+      <h2 class="section-title" data-reveal>はじめる前の小さな不安に、<br>お答えします。</h2>
+      <div class="faq-list">
+        <div class="faq-item"><button class="faq-q" type="button"><span><b>Q</b>ダンス未経験でも大丈夫ですか？</span><span>+</span></button><div class="faq-a"><p>大丈夫です。リズムの取り方や基本の動きから進めるので、未経験から参加できます。</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span><b>Q</b>年齢的に浮きませんか？</span><span>+</span></button><div class="faq-a"><p>大人から始める方も参加しています。ADULTクラスでは、年齢よりも「やってみたい」気持ちを大切にしています。</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span><b>Q</b>体験レッスンの持ち物は？</span><span>+</span></button><div class="faq-a"><p>動きやすい服装、室内シューズ、タオル、水分をお持ちください。</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span><b>Q</b>親子で参加できますか？</span><span>+</span></button><div class="faq-a"><p>可能です。親子参加や兄弟での参加も相談できます。親子割・兄弟割もあります。</p></div></div>
+        <div class="faq-item"><button class="faq-q" type="button"><span><b>Q</b>体験後に必ず入会が必要ですか？</span><span>+</span></button><div class="faq-a"><p>必須ではありません。体験後に、クラスや通い方を確認してから決められます。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="final">
+    <div class="wrap">
+      <div class="final-box" data-card>
+        <span class="section-kicker">Final CTA</span>
+        <h2 class="section-title">次の予定に、少しだけ<br>自分を楽しむ時間を。</h2>
+        <p class="section-lead">音にふれるたび、わたしが少し軽くなる。まずは1,000円の体験レッスンで、チームの空気を感じてください。</p>
+        <div class="price-actions" style="margin-top:28px">
+          <a class="btn btn-primary" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">体験レッスンを予約する</a>
+          <a class="btn btn-line" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">公式LINEで相談する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <img src="assets/logo.jpg" alt="新生LUCKY★JAM DANCEロゴ">
+    <strong>新生LUCKY★JAM DANCE</strong>
+    <p>筑紫野市・太宰府エリア HIPHOP DANCE TEAM</p>
+  </footer>
+</main>
+
 <div class="bottom-cta">
-  <a href="#price" class="btn-trial">体験レッスン予約</a>
-  <a href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener" class="btn-line">公式LINE</a>
+  <a class="trial" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">体験レッスンを予約する</a>
+  <a class="line" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">公式LINEで相談</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-gsap.registerPlugin(ScrollTrigger);
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const loader = document.querySelector('#loader');
 
-/* ===== LOADER ===== */
-window.addEventListener('DOMContentLoaded', () => {
-  const tl = gsap.timeline({
-    onComplete: () => {
-      gsap.to('#loader', {
+  function hideLoader(){
+    if(!loader) return;
+    gsap.to(loader,{opacity:0,duration:.45,ease:'power2.out',onComplete:()=>loader.style.display='none'});
+  }
+
+  if(window.gsap && window.ScrollTrigger && !reduce){
+    gsap.registerPlugin(ScrollTrigger);
+    const isMobileMotion = window.matchMedia('(max-width: 520px)').matches;
+
+    const loadTl = gsap.timeline({onComplete:hideLoader});
+    loadTl.from('.loader-logo',{y:32,opacity:0,duration:.55,ease:'power3.out'})
+      .to('.loader-bar span',{width:'100%',duration:.65,ease:'power2.inOut'},'-=.1');
+
+    gsap.from('[data-hero]',{
+      x:-42,
+      opacity:0,
+      duration:.72,
+      stagger:.09,
+      delay:1,
+      ease:'power3.out'
+    });
+    gsap.to('[data-bg-word]',{xPercent:-18,duration:28,repeat:-1,yoyo:true,ease:'sine.inOut'});
+    gsap.to('[data-zoom] img',{
+      scale:1,
+      ease:'none',
+      scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}
+    });
+    gsap.to('.rush-left',{xPercent:-38,duration:34,repeat:-1,ease:'none'});
+    gsap.fromTo('.rush-right',{xPercent:-34},{xPercent:0,duration:32,repeat:-1,ease:'none'});
+
+    gsap.utils.toArray('[data-reveal]').forEach((el,i)=>{
+      gsap.from(el,{
+        x:isMobileMotion ? 0 : (i % 2 ? 28 : -28),
+        y:18,
         opacity:0,
-        duration:.6,
-        onComplete: () => {
-          document.getElementById('loader').style.display='none';
-          document.body.style.overflow='auto';
-          playHeroIntro();
-        }
+        duration:.72,
+        ease:'power3.out',
+        scrollTrigger:{trigger:el,start:'top 84%'}
       });
-    }
-  });
-  document.body.style.overflow='hidden';
-
-  tl.from('#loadLogo span', {
-      y:20, opacity:0, scale:.8,
-      duration:.5,
-      stagger:0.05,
-      ease:'power2.out'
-    })
-    .to('#loadIcons span', {
-      y:-14,
-      duration:.4,
-      stagger:{each:.08, yoyo:true, repeat:3},
-      ease:'sine.inOut'
-    }, '-=0.2')
-    .to('#loadBar', {
-      width:'100%',
-      duration:1,
-      ease:'power1.inOut'
-    }, '-=0.6');
-});
-
-function playHeroIntro(){
-  gsap.from('[data-rotate-in]', {
-    opacity:0,
-    y:24,
-    duration:.7,
-    stagger:.1,
-    ease:'power2.out'
-  });
-  gsap.from('[data-hero-title] .line1', {
-    opacity:0,
-    y:20,
-    duration:.7,
-    stagger:.12,
-    ease:'power2.out',
-    delay:.1
-  });
-  gsap.from('#hero [data-fade-up]', {
-    opacity:0,
-    y:18,
-    duration:.7,
-    stagger:.12,
-    delay:.3,
-    ease:'power2.out'
-  });
-}
-
-/* ===== marquee ===== */
-gsap.to('#marqueeTrack', {
-  xPercent:-50,
-  duration:36,
-  repeat:-1,
-  ease:'none'
-});
-
-/* ===== scroll reveal: section titles ===== */
-document.querySelectorAll('[data-pop]').forEach(el => {
-  gsap.from(el, {
-    opacity:0,
-    y:20,
-    duration:.7,
-    ease:'power2.out',
-    scrollTrigger:{
-      trigger:el,
-      start:'top 85%'
-    }
-  });
-});
-
-/* ===== scroll reveal: fade up ===== */
-document.querySelectorAll('[data-fade-up]').forEach(el => {
-  gsap.from(el, {
-    opacity:0,
-    y:24,
-    duration:.7,
-    ease:'power2.out',
-    scrollTrigger:{
-      trigger:el,
-      start:'top 88%'
-    }
-  });
-});
-
-/* ===== scroll reveal: photo cards (outside hero, already handled by intro) ===== */
-document.querySelectorAll('section:not(#hero) [data-rotate-in]').forEach(el => {
-  gsap.from(el, {
-    opacity:0,
-    y:24,
-    duration:.7,
-    ease:'power2.out',
-    scrollTrigger:{
-      trigger:el,
-      start:'top 90%'
-    }
-  });
-});
-
-/* ===== cards generic stagger (get/price/class/voice) ===== */
-gsap.utils.toArray('.get-card').forEach((card,i)=>{
-  gsap.from(card,{
-    opacity:0,
-    y:24,
-    duration:.6,
-    delay:i*0.05,
-    ease:'power2.out',
-    scrollTrigger:{trigger:card, start:'top 90%'}
-  });
-});
-
-/* ===== floating deco (desktop only, subtle) ===== */
-document.querySelectorAll('.float-deco').forEach((el,i)=>{
-  gsap.to(el, {
-    y: i%2===0 ? -10 : 10,
-    duration: 5 + i,
-    repeat:-1,
-    yoyo:true,
-    ease:'sine.inOut'
-  });
-});
-
-/* ===== FAQ accordion ===== */
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click', () => {
-    const item = q.closest('.faq-item');
-    const ans = item.querySelector('.faq-a');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(o=>{
-      if(o!==item){
-        o.classList.remove('open');
-        o.querySelector('.faq-a').style.maxHeight=null;
+    });
+    gsap.utils.toArray('[data-card]').forEach((el)=>{
+      gsap.from(el,{
+        y:34,
+        opacity:0,
+        duration:.72,
+        ease:'power3.out',
+        scrollTrigger:{trigger:el,start:'top 88%'}
+      });
+    });
+    gsap.utils.toArray('[data-image-card]').forEach((el)=>{
+      const img = el.querySelector('img');
+      gsap.from(el,{clipPath:'inset(0 100% 0 0)',duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
+      if(img){
+        gsap.to(img,{scale:1.12,ease:'none',scrollTrigger:{trigger:el,start:'top bottom',end:'bottom top',scrub:true}});
       }
     });
-    if(isOpen){
-      item.classList.remove('open');
-      ans.style.maxHeight=null;
-    } else {
-      item.classList.add('open');
-      ans.style.maxHeight = ans.scrollHeight+'px';
-    }
+    gsap.utils.toArray('.btn').forEach((btn)=>{
+      btn.addEventListener('mouseenter',()=>gsap.fromTo(btn,{ '--shine':0 },{}));
+      gsap.to(btn.querySelector ? btn : btn,{});
+    });
+  } else {
+    hideLoader();
+  }
+
+  document.querySelectorAll('.btn').forEach(btn=>{
+    btn.addEventListener('mouseenter',()=>{
+      if(!window.gsap || reduce) return;
+      gsap.fromTo(btn,{scale:.995},{scale:1,duration:.2,ease:'power2.out'});
+      gsap.fromTo(btn,{backgroundPosition:'0% 50%'},{backgroundPosition:'100% 50%',duration:.45,ease:'power1.out'});
+    });
   });
-});
+
+  document.querySelectorAll('.faq-q').forEach((button)=>{
+    button.addEventListener('click',()=>{
+      const item = button.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const mark = button.querySelector('span:last-child');
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other=>{
+        if(other === item) return;
+        other.classList.remove('open');
+        other.querySelector('.faq-a').style.maxHeight = null;
+        other.querySelector('.faq-q span:last-child').textContent = '+';
+      });
+      item.classList.toggle('open',!open);
+      answer.style.maxHeight = open ? null : answer.scrollHeight + 'px';
+      mark.textContent = open ? '+' : '-';
+    });
+  });
+})();
 </script>
 </body>
 </html>
