@@ -437,6 +437,7 @@ button,input{font:inherit}
 }
 
 /* empathy */
+.empathy-title span{white-space:nowrap}
 .split{
   display:grid;
   gap:34px;
@@ -574,6 +575,7 @@ button,input{font:inherit}
 .price-actions{display:grid;gap:10px;margin-top:28px}
 
 /* flow */
+.flow-title span{white-space:nowrap}
 .flow{counter-reset:flow;display:grid;gap:16px;margin-top:34px}
 .flow-step{
   counter-increment:flow;
@@ -637,6 +639,11 @@ button,input{font:inherit}
   font-family:var(--font-en);
   font-size:16px;
   letter-spacing:.08em;
+}
+.leader-title span{white-space:nowrap}
+.leader-title-accent{
+  display:inline-block;
+  color:var(--neon);
 }
 .profile-text{padding:30px 22px}
 .profile-text .role{color:var(--neon);font-family:var(--font-en);font-size:22px;letter-spacing:.08em}
@@ -742,11 +749,11 @@ button,input{font:inherit}
 }
 @media(max-width:520px){
   .wrap{width:calc(100% - 32px)}
-  .section{padding:76px 0}
+  .section{padding:58px 0}
   .hero{padding:92px 0 78px}
   .hero-media img{
-    height:116%;
-    margin-top:-12%;
+    height:100%;
+    margin-top:0;
     object-position:center center;
   }
   .hero-media::after{
@@ -760,12 +767,16 @@ button,input{font:inherit}
   .hero-actions .btn-line{display:none}
   .tag-row li{font-size:11px}
   #flow{padding-bottom:0}
-  .photo-rush{padding:8px 0 42px}
-  .photo-head{padding:0 16px 8px}
-  .photo-head .section-title{font-size:46px;line-height:.9;margin-bottom:10px}
-  .photo-head .section-lead{margin-top:0;font-size:14px}
+  .photo-rush{padding:0 0 34px}
+  .photo-head{padding:0 16px 2px}
+  .photo-head .section-title{font-size:42px;line-height:.9;margin-bottom:8px}
+  .photo-head .section-lead{margin-top:0;font-size:13.5px;line-height:1.75}
+  .empathy-title{font-size:clamp(27px,7vw,31px);line-height:1.32}
+  .flow-title{font-size:clamp(27px,7vw,31px);line-height:1.32}
+  .leader-title{font-size:clamp(31px,8vw,36px);line-height:1.24}
   .voice-title{font-size:clamp(27px,7.2vw,32px);line-height:1.28}
   .faq-title{font-size:clamp(27px,7.3vw,32px);line-height:1.28}
+  .final-title{font-size:clamp(30px,8vw,36px);line-height:1.22}
   .rush-row{padding:4px 0}
   .rush-row + .rush-row{margin-top:4px}
   .line-fab{top:14px;right:14px}
@@ -846,7 +857,7 @@ button,input{font:inherit}
     <div class="wrap split">
       <div>
         <span class="section-kicker" data-reveal>Empathy</span>
-        <h2 class="section-title" data-reveal><span>子どもが</span><br><span>少し手を離れた頃、</span><br><span>わたしの時間も少しずつ。</span></h2>
+        <h2 class="section-title empathy-title" data-reveal><span>子どもが</span><br><span>少し手を離れた頃、</span><br><span>わたしの時間も少しずつ。</span></h2>
         <p class="section-lead" data-reveal>新生LUCKY★JAM DANCEは、初心者も大人からの挑戦も、チームで受け止めるHIPHOPの場所です。</p>
       </div>
       <div>
@@ -863,7 +874,7 @@ button,input{font:inherit}
   <section class="section charcoal" id="flow">
     <div class="wrap">
       <span class="section-kicker" data-reveal>Flow</span>
-      <h2 class="section-title" data-reveal>はじめての日も、<br>安心して来られるように。</h2>
+      <h2 class="section-title flow-title" data-reveal><span>はじめての日も、</span><br><span>安心して来られるように。</span></h2>
       <div class="flow">
         <article class="flow-step" data-reveal><div><h3>公式LINEで予約</h3><p>体験したい日時をLINEで送信。参加できるクラスを確認します。</p></div></article>
         <article class="flow-step" data-reveal><div><h3>動きやすい服で参加</h3><p>必要なのは、室内シューズ、タオル、水分。特別な道具は不要です。</p></div></article>
@@ -932,12 +943,12 @@ button,input{font:inherit}
   <section class="section dark" id="profile">
     <div class="wrap">
       <span class="section-kicker" data-reveal>Leader</span>
-      <h2 class="section-title" data-reveal>一緒に踊り、<br>一緒に楽しむチームリーダー。</h2>
+      <h2 class="section-title leader-title" data-reveal><span>一緒に踊り、</span><br><span>一緒に楽しむ</span><br><span class="leader-title-accent" data-leader-slide>チームリーダー。</span></h2>
       <div class="profile-card" data-card>
         <div class="profile-photo"><img src="assets/teacher-photo.jpg" alt="新生LUCKY★JAM DANCE チームリーダー"><span class="profile-name-badge">講師 <b>Ayaka</b></span></div>
         <div class="profile-text">
           <span class="role">TEAM LEADER</span>
-          <h3>一緒に踊り、一緒にステージへ向かう存在。</h3>
+          <h3>一緒に踊り、一緒に<br>ステージへ向かう存在。</h3>
           <p>初心者にもわかりやすく、音の取り方、体の使い方、見せ方をひとつずつ伝えます。大人からの挑戦も、親子での参加も歓迎。うまさだけではなく、表現する楽しさとチームとしての一体感を大切にしています。</p>
           <p>ステージに立つ緊張も、踊り切ったあとの高揚感も、仲間と分け合える。それが新生LUCKY★JAM DANCEの強さです。</p>
           <!-- 実績・出演歴は情報提供後にここへ追記できます。例：イベント出演歴、コンテスト参加歴、指導歴など。 -->
@@ -1046,6 +1057,14 @@ button,input{font:inherit}
         ease:'power3.out',
         scrollTrigger:{trigger:el,start:'top 84%'}
       });
+    });
+    gsap.from('[data-leader-slide]',{
+      x:-46,
+      opacity:0,
+      duration:.82,
+      delay:.14,
+      ease:'power3.out',
+      scrollTrigger:{trigger:'[data-leader-slide]',start:'top 86%'}
     });
     gsap.utils.toArray('[data-card]').forEach((el)=>{
       gsap.from(el,{
