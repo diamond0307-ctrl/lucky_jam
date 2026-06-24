@@ -303,6 +303,22 @@ button,input{font:inherit}
   text-shadow:0 18px 42px rgba(0,0,0,.55);
 }
 .hero-title .red{color:var(--red)}
+.hero-title .heartbeat{
+  display:inline-block;
+  color:var(--neon);
+  transform-origin:center 58%;
+  animation:heartbeat 1.42s ease-in-out infinite;
+  text-shadow:
+    0 0 16px rgba(215,255,47,.36),
+    0 18px 42px rgba(0,0,0,.55);
+}
+@keyframes heartbeat{
+  0%, 100%{transform:scale(1)}
+  10%{transform:scale(1.12)}
+  18%{transform:scale(.98)}
+  28%{transform:scale(1.18)}
+  42%{transform:scale(1)}
+}
 .hero-copy{
   max-width:680px;
   color:rgba(247,247,242,.84);
@@ -537,6 +553,10 @@ button,input{font:inherit}
   padding:24px 20px;
   background:#101012;
   border:1px solid var(--edge);
+  text-align:center;
+  justify-items:center;
+  align-content:center;
+  min-height:220px;
 }
 .price-card.featured{
   background:var(--neon);
@@ -594,6 +614,30 @@ button,input{font:inherit}
   object-position:center 28%;
   filter:saturate(.9) contrast(1.08);
 }
+.profile-name-badge{
+  position:absolute;
+  right:14px;
+  bottom:14px;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  background:rgba(11,11,13,.86);
+  border:1px solid rgba(215,255,47,.75);
+  color:var(--white);
+  font-family:var(--font-impact);
+  font-size:15px;
+  line-height:1;
+  letter-spacing:.04em;
+  backdrop-filter:blur(8px);
+}
+.profile-name-badge b{
+  color:var(--neon);
+  font-family:var(--font-en);
+  font-size:16px;
+  letter-spacing:.08em;
+}
 .profile-text{padding:30px 22px}
 .profile-text .role{color:var(--neon);font-family:var(--font-en);font-size:22px;letter-spacing:.08em}
 .profile-text h3{margin:14px 0 18px;font-family:var(--font-impact);font-size:clamp(28px,7vw,52px);line-height:1.18;letter-spacing:.01em}
@@ -611,6 +655,7 @@ button,input{font:inherit}
 .voice-card b{display:block;color:var(--neon);font-family:var(--font-en);font-size:22px;letter-spacing:.08em;margin-bottom:10px}
 .voice-card p{margin:0 0 14px;line-height:1.85;color:rgba(247,247,242,.84);font-size:14px}
 .voice-card small{color:var(--muted);font-weight:800}
+.voice-title span{white-space:nowrap}
 
 /* life */
 .life{
@@ -626,6 +671,7 @@ button,input{font:inherit}
 
 /* faq/final */
 .faq-list{margin-top:30px;display:grid;gap:10px}
+.faq-title span{white-space:nowrap}
 .faq-item{border:1px solid rgba(11,11,13,.16);background:#fff}
 .faq-q{
   width:100%;
@@ -657,6 +703,7 @@ button,input{font:inherit}
   padding:30px 22px;
 }
 .final .section-title{font-size:clamp(36px,10vw,86px)}
+.final-title span{white-space:nowrap}
 .footer{
   padding:30px 20px 118px;
   background:#050506;
@@ -712,7 +759,15 @@ button,input{font:inherit}
   .hero-copy{font-size:14.5px}
   .hero-actions .btn-line{display:none}
   .tag-row li{font-size:11px}
-  .photo-head .section-title{font-size:58px}
+  #flow{padding-bottom:0}
+  .photo-rush{padding:8px 0 42px}
+  .photo-head{padding:0 16px 8px}
+  .photo-head .section-title{font-size:46px;line-height:.9;margin-bottom:10px}
+  .photo-head .section-lead{margin-top:0;font-size:14px}
+  .voice-title{font-size:clamp(27px,7.2vw,32px);line-height:1.28}
+  .faq-title{font-size:clamp(27px,7.3vw,32px);line-height:1.28}
+  .rush-row{padding:4px 0}
+  .rush-row + .rush-row{margin-top:4px}
   .line-fab{top:14px;right:14px}
 }
 @media(prefers-reduced-motion:reduce){
@@ -737,9 +792,9 @@ button,input{font:inherit}
     </div>
     <div class="hero-outline" data-bg-word>LUCKY JAM / HIPHOP / BEAT</div>
     <div class="hero-content">
-      <div class="hero-kicker" data-hero>TSUKUSHINO / DAZAIFU HIPHOP TEAM</div>
+      <div class="hero-kicker" data-hero>新生LUCKY★JAM DANCE</div>
       <h1 class="hero-title" data-hero>
-        音にふれるたび、<br>
+        <span class="heartbeat">音</span>にふれるたび、<br>
         <span class="red">わたしが少し軽くなる。</span>
       </h1>
       <p class="hero-copy" data-hero>
@@ -767,7 +822,7 @@ button,input{font:inherit}
     <div class="wrap split">
       <div>
         <span class="section-kicker" data-reveal>Trial</span>
-        <h2 class="section-title" data-reveal>まずは一度、音に乗る楽しさを<br>感じてみませんか。</h2>
+        <h2 class="section-title" data-reveal>まずは一度、<br>音に乗る楽しさを<br>感じてみませんか。</h2>
         <p class="section-lead" data-reveal>体験レッスンは1,000円。初心者の方も、親子での参加も大丈夫です。持ち物や参加できる日程は、公式LINEから気軽に確認できます。</p>
         <div class="price-actions" data-reveal>
           <a class="btn btn-primary" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">まずは1,000円で体験する</a>
@@ -791,8 +846,8 @@ button,input{font:inherit}
     <div class="wrap split">
       <div>
         <span class="section-kicker" data-reveal>Empathy</span>
-        <h2 class="section-title" data-reveal>子どもが少し手を離れた頃、<br>わたしの時間も少しずつ。</h2>
-        <p class="section-lead" data-reveal>新生LUCKY★JAM DANCEは、初心者も大人からの挑戦も、チームで受け止めるHIPHOPの場所です。かっこよさはある。でも、怖くない。</p>
+        <h2 class="section-title" data-reveal><span>子どもが</span><br><span>少し手を離れた頃、</span><br><span>わたしの時間も少しずつ。</span></h2>
+        <p class="section-lead" data-reveal>新生LUCKY★JAM DANCEは、初心者も大人からの挑戦も、チームで受け止めるHIPHOPの場所です。</p>
       </div>
       <div>
         <div class="feeling-list">
@@ -850,7 +905,7 @@ button,input{font:inherit}
   <section class="section dark" id="get">
     <div class="wrap">
       <span class="section-kicker" data-reveal>What You Get</span>
-      <h2 class="section-title" data-reveal>ダンスが、毎日の表情を<br>少し変えてくれる。</h2>
+      <h2 class="section-title" data-reveal>ダンスが、<br>毎日の表情を<br>少し変えてくれる。</h2>
       <div class="gain-grid">
         <article class="gain-card" data-card data-num="01"><span class="label">MOVE</span><h3>自分の時間が戻ってくる</h3><p>週に1回、音に集中する時間。家でも職場でもない場所で、自分のスイッチを入れ直せます。</p></article>
         <article class="gain-card" data-card data-num="02"><span class="label">TEAM</span><h3>世代を超えた仲間ができる</h3><p>子ども、大人、親子が同じビートに乗る。違う世代が混ざるから、チームの熱量が生まれます。</p></article>
@@ -863,7 +918,7 @@ button,input{font:inherit}
   <section class="section charcoal" id="classes">
     <div class="wrap">
       <span class="section-kicker" data-reveal>Classes</span>
-      <h2 class="section-title" data-reveal>子どもも、大人も、親子も。<br>それぞれのペースで楽しめる。</h2>
+      <h2 class="section-title" data-reveal>子どもも、大人も、<br>親子も。<br>それぞれのペースで<br>楽しめる。</h2>
       <p class="section-lead" data-reveal>キッズも、ティーンズも、大人も、親子も。年齢や経験に合わせて、無理なく始められるクラスを用意しています。</p>
       <div class="class-panels">
         <article class="class-panel" data-image-card><img src="assets/event-photo-1.jpg" alt="キッズクラスの集合写真"><div class="class-body"><span class="class-code">KIDS</span><h3>KIDS</h3><p>はじめてのリズムを、遊びながら身体へ。</p></div></article>
@@ -879,7 +934,7 @@ button,input{font:inherit}
       <span class="section-kicker" data-reveal>Leader</span>
       <h2 class="section-title" data-reveal>一緒に踊り、<br>一緒に楽しむチームリーダー。</h2>
       <div class="profile-card" data-card>
-        <div class="profile-photo"><img src="assets/teacher-photo.jpg" alt="新生LUCKY★JAM DANCE チームリーダー"></div>
+        <div class="profile-photo"><img src="assets/teacher-photo.jpg" alt="新生LUCKY★JAM DANCE チームリーダー"><span class="profile-name-badge">講師 <b>Ayaka</b></span></div>
         <div class="profile-text">
           <span class="role">TEAM LEADER</span>
           <h3>一緒に踊り、一緒にステージへ向かう存在。</h3>
@@ -895,7 +950,7 @@ button,input{font:inherit}
   <section class="section charcoal" id="voice">
     <div class="wrap">
       <span class="section-kicker" data-reveal>Voices</span>
-      <h2 class="section-title" data-reveal>「できた」より先に、<br>「楽しかった」がある。</h2>
+      <h2 class="section-title voice-title" data-reveal><span>「できた」より先に、</span><br><span>「楽しかった」がある。</span></h2>
       <div class="voice-grid">
         <article class="voice-card" data-card><b>40s / ADULT</b><p>子どもが少し手を離れて、自分の時間として参加。最初は緊張しましたが、音が鳴ると自然に体が動きました。</p><small>40代・女性</small></article>
         <article class="voice-card" data-card><b>50s / BEGINNER</b><p>運動経験ゼロでも大丈夫でした。できないところもチームで笑いながら練習できるので、続けやすいです。</p><small>50代・女性</small></article>
@@ -908,7 +963,7 @@ button,input{font:inherit}
   <section class="section paper" id="faq">
     <div class="wrap">
       <span class="section-kicker" data-reveal>FAQ</span>
-      <h2 class="section-title" data-reveal>はじめる前の小さな不安に、<br>お答えします。</h2>
+      <h2 class="section-title faq-title" data-reveal><span>はじめる前の</span><br><span>小さな不安に、お答えします。</span></h2>
       <div class="faq-list">
         <div class="faq-item"><button class="faq-q" type="button"><span><b>Q</b>ダンス未経験でも大丈夫ですか？</span><span>+</span></button><div class="faq-a"><p>大丈夫です。リズムの取り方や基本の動きから進めるので、未経験から参加できます。</p></div></div>
         <div class="faq-item"><button class="faq-q" type="button"><span><b>Q</b>年齢的に浮きませんか？</span><span>+</span></button><div class="faq-a"><p>大人から始める方も参加しています。ADULTクラスでは、年齢よりも「やってみたい」気持ちを大切にしています。</p></div></div>
@@ -923,7 +978,7 @@ button,input{font:inherit}
     <div class="wrap">
       <div class="final-box" data-card>
         <span class="section-kicker">Final CTA</span>
-        <h2 class="section-title">次の予定に、少しだけ<br>自分を楽しむ時間を。</h2>
+        <h2 class="section-title final-title"><span>次の予定に、</span><br><span>少しだけ</span><br><span>自分を楽しむ時間を。</span></h2>
         <p class="section-lead">音にふれるたび、わたしが少し軽くなる。まずは1,000円の体験レッスンで、チームの空気を感じてください。</p>
         <div class="price-actions" style="margin-top:28px">
           <a class="btn btn-primary" href="https://lin.ee/9FWJ80K" target="_blank" rel="noopener">体験レッスンを予約する</a>
